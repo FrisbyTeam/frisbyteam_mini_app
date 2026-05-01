@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>FrisbyTeam | Амбар</title>
-    <!-- Подключаем шрифты: Russo One + Montserrat (кириллица) -->
+    <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Russo+One&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
@@ -16,6 +16,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Montserrat', sans-serif;
+            /* Градиент: черный -> золото в углу */
             background: linear-gradient(135deg, var(--black) 0%, #111 60%, #2a2005 85%, var(--gold) 100%);
             color: var(--gold-bright);
             padding: 24px;
@@ -27,36 +28,40 @@
             text-align: center;
             overflow: hidden;
         }
+        
+        /* ЛОГОТИП: Крупный и аккуратный */
         .logo {
-            width: 100%;          /* Подстраивается под ширину */
-            max-width: 150px;     /* Ограничение, чтобы не был гигантским (увеличил) */
-            height: auto;         /* САМОЕ ВАЖНОЕ: сохраняет пропорции, убирает сжатие */
+            width: 100%;
+            max-width: 220px; /* СДЕЛАЛ КРУПНЕЕ (было 120px) */
+            height: auto;
             margin-bottom: 24px;
             display: block;
-            margin-left: auto;    /* Центрирование */
-            margin-right: auto;   /* Центрирование */
-            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4));
+            margin-left: auto;
+            margin-right: auto;
         }
-        }
+
+        /* ЗАГОЛОВОК FrisbyTeam */
         .brand {
             font-family: 'Russo One', sans-serif;
-            font-size: 36px;
-            margin-bottom: 12px;
+            font-size: 32px;
+            margin-bottom: 10px;
             color: var(--gold-bright);
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-transform: uppercase;            letter-spacing: 1px;
         }
+
+        /* ПОДЗАГОЛОВОК Твоя статистика... */
         .tagline {
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
             font-size: 15px;
             color: #e5c100;
-            line-height: 1.6;
+            line-height: 1.5;
             margin-bottom: 40px;
             text-shadow: 0 1px 5px rgba(0,0,0,0.9);
-            letter-spacing: 0.5px;
         }
+
+        /* КНОПКА */
         .action-btn {
             background: linear-gradient(135deg, #FFD700, #D4AF37);
             color: #000000;
@@ -81,6 +86,7 @@
     </style>
 </head>
 <body>
+    <!-- Твой логотип -->
     <img class="logo" src="logo.png" alt="FrisbyTeam Logo">
 
     <div class="brand">FrisbyTeam</div>
@@ -90,6 +96,5 @@
     <script>
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
-    </script>
-</body>
+    </script></body>
 </html>
