@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>FrisbyTeam | Амбар</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Russo+One&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
@@ -29,10 +29,10 @@
         
         /* ЛОГОТИП */
         .logo {
-            width: 80%;          /* Занимает 80% ширины экрана */
-            max-width: 320px;    /* Но не шире 320 пикселей (КРУПНО) */
-            height: auto;        /* Пропорции сохраняются */
-            margin-bottom: 5px;  /* ОЧЕНЬ МАЛЕНЬКИЙ ОТСТУП (было 24px) */
+            width: 80%;
+            max-width: 320px;
+            height: auto;
+            margin-bottom: 0px; /* РАЗРЫВ УБРАН */
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -41,23 +41,23 @@
         /* ЗАГОЛОВОК */
         .brand {
             font-family: 'Russo One', sans-serif;
-            font-size: 28px; /* Чуть уменьшил, чтобы влезло */
-            margin-bottom: 8px;
+            font-size: 28px;
+            margin-bottom: 2px; /* Почти нет отступа до текста */
             color: var(--gold-bright);
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* ПОДЗАГОЛОВОК */
+        /* ПОДЗАГОЛОВОК (УВЕЛИЧЕН) */
         .tagline {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            color: #e5c100;
-            line-height: 1.4;
-            margin-bottom: 30px;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.9);
+            font-weight: 700; /* Жирнее */
+            font-size: 20px;  /* Крупнее */
+            color: #FFD700;   /* Чуть ярче */
+            line-height: 1.3;
+            margin-bottom: 28px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
         /* КНОПКА */
@@ -80,9 +80,7 @@
     </style>
 </head>
 <body>
-    <!-- Логотип -->
     <img class="logo" src="logo.png" alt="FrisbyTeam Logo">
-
     <div class="brand">FrisbyTeam</div>
     <div class="tagline">Твоя статистика.<br>Твой контроль.</div>
     <button class="action-btn" onclick="Telegram.WebApp.showAlert('Раздел в разработке!')">Открыть амбар</button>
