@@ -15,9 +15,9 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Montserrat', sans-serif;
+            /* Единый фон для всего приложения */
             background: linear-gradient(135deg, var(--black) 0%, #111 60%, #2a2005 85%, var(--gold) 100%);
             color: var(--gold-bright);
-            padding: 20px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -25,7 +25,10 @@
             justify-content: center;
             text-align: center;
             overflow: hidden;
+            padding: 20px;
         }
+
+        /* АНИМАЦИЯ */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -34,9 +37,17 @@
             opacity: 0;
             animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
+
+        /* --- ЭКРАН 1: ПРИВЕТСТВИЕ --- */
+        #welcome-screen {
+            display: flex; /* По умолчанию видим */
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
         .logo {
-            width: 80%;
-            max-width: 220px;
+            width: 80%;            max-width: 220px;
             height: auto;
             margin-bottom: 0px;
             display: block;
@@ -47,7 +58,8 @@
         .brand {
             font-family: 'Russo One', sans-serif;
             font-size: 28px;
-            margin-bottom: 4px;            color: var(--gold-bright);
+            margin-bottom: 4px;
+            color: var(--gold-bright);
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -64,6 +76,60 @@
         .tagline-stat { margin-bottom: 2px; animation-delay: 0.6s; }
         .tagline-ctrl { margin-bottom: 30px; animation-delay: 0.9s; }
 
+        /* --- ЭКРАН 2: ГЛАВНОЕ МЕНЮ --- */
+        #main-menu {
+            display: none; /* Скрыто по умолчанию */
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .menu-header {
+            font-family: 'Russo One', sans-serif;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: var(--gold-bright);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.1s forwards;
+        }
+        /* Сетка кнопок */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Две колонки */
+            gap: 15px; /* Отступы между кнопками */
+            width: 100%;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.3s forwards;
+        }
+
+        /* Кнопки меню */
+        .menu-btn {
+            background: linear-gradient(135deg, #FFD700, #D4AF37);
+            color: #000000;
+            border: none;
+            padding: 16px 10px;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            transition: transform 0.1s;
+        }
+        .menu-btn:active { transform: scale(0.97); }
+
+        /* Кнопка на всю ширину */
+        .menu-btn.full-width {
+            grid-column: span 2; /* Растянуть на 2 колонки */
+            margin-top: 0px;
+        }
+
+        /* Кнопка ВОЙТИ */
         .btn-wrapper {
             animation-delay: 1.2s;
             width: 100%;
@@ -79,8 +145,7 @@
             border-radius: 14px;
             font-family: 'Montserrat', sans-serif;
             font-size: 17px;
-            font-weight: 700;
-            width: 100%;
+            font-weight: 700;            width: 100%;
             max-width: 280px;
             cursor: pointer;
             box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
@@ -91,15 +156,46 @@
     </style>
 </head>
 <body>
-    <img class="logo anim-element" src="logo.png" alt="FrisbyTeam Logo">
-    <div class="brand anim-element">FrisbyTeam</div>
-    <div class="tagline-stat anim-element">Твоя статистика.</div>
-    <div class="tagline-ctrl anim-element">Твой контроль.</div>
-    <div class="btn-wrapper anim-element">
-        <button class="action-btn" onclick="Telegram.WebApp.showAlert('Раздел в разработке!')">ВОЙТИ</button>    </div>
+
+    <!-- ЭКРАН 1: ПРИВЕТСТВИЕ -->
+    <div id="welcome-screen">
+        <img class="logo anim-element" src="logo.png" alt="FrisbyTeam Logo">
+        <div class="brand anim-element">FrisbyTeam</div>
+        <div class="tagline-stat anim-element">Твоя статистика.</div>
+        <div class="tagline-ctrl anim-element">Твой контроль.</div>
+        <div class="btn-wrapper anim-element">
+            <button class="action-btn" id="enterBtn">ВОЙТИ</button>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 2: ГЛАВНОЕ МЕНЮ -->
+    <div id="main-menu">
+        <div class="menu-header">Главное меню</div>
+        <div class="menu-grid">
+            <button class="menu-btn">Мои ставки</button>
+            <button class="menu-btn">Мои депозиты</button>
+            <button class="menu-btn">Мои выводы</button>
+            <button class="menu-btn">Мои фрибеты</button>
+            <button class="menu-btn full-width">Моя статистика</button>
+        </div>
+    </div>
+
     <script>
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
+
+        // Логика переключения экранов
+        const enterBtn = document.getElementById('enterBtn');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const mainMenu = document.getElementById('main-menu');
+
+        enterBtn.addEventListener('click', () => {
+            // Скрываем приветствие
+            welcomeScreen.style.display = 'none';
+            // Показываем меню
+            mainMenu.style.display = 'flex';
+            // Вибрация для ощущения нажатия (если телефон поддерживает)            Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+        });
     </script>
 </body>
 </html>
