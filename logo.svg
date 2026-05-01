@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Градиент золота -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700; stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#F4C430; stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#D4AF37; stop-opacity:1"/>
+    </linearGradient>
+    <!-- Тень -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Чёрный круглый фон -->
+  <circle cx="256" cy="256" r="240" fill="#050505" stroke="url(#goldGrad)" stroke-width="4"/>
+  
+  <!-- Буква T (основа) -->
+  <path d="M 180 160 L 332 160 L 332 190 L 271 190 L 271 380 L 241 380 L 241 190 L 180 190 Z" 
+        fill="url(#goldGrad)" filter="url(#glow)"/>
+  
+  <!-- Элемент F (динамичная линия вправо) -->
+  <path d="M 256 240 Q 290 240 310 260 Q 320 270 315 285 Q 310 295 295 295 L 256 295 Z" 
+        fill="url(#goldGrad)" filter="url(#glow)" opacity="0.9"/>
+  
+  <!-- Декоративная искра -->
+  <circle cx="320" cy="200" r="6" fill="#FFD700" opacity="0.8"/>
+  <circle cx="200" cy="340" r="4" fill="#FFD700" opacity="0.6"/>
+</svg>
