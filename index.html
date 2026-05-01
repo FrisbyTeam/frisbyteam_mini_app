@@ -24,8 +24,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            overflow: hidden;
-            padding: 20px;
+            overflow-y: auto;
+            padding: 20px 20px 60px 20px;
         }
 
         @keyframes fadeInUp {
@@ -45,12 +45,9 @@
         .tagline-stat { margin-bottom: 2px; animation-delay: 0.6s; }
         .tagline-ctrl { margin-bottom: 30px; animation-delay: 0.9s; }
 
-        /* --- ЭКРАН 2: ГЛАВНОЕ МЕНЮ --- */
-        #main-menu { display: none; flex-direction: column; align-items: center; width: 100%; max-width: 360px; }
-        .menu-header { font-family: 'Russo One', sans-serif; font-size: 24px; margin-bottom: 30px; animation: fadeInUp 0.8s 0.1s forwards; opacity: 0; }        
-        /* --- ЭКРАН 3: МОИ СТАВКИ --- */
-        #bets-screen { display: none; flex-direction: column; align-items: center; width: 100%; max-width: 360px; }
-        .bets-header { font-family: 'Russo One', sans-serif; font-size: 24px; margin-bottom: 25px; text-shadow: 0 4px 15px rgba(0,0,0,0.9); opacity: 0; animation: fadeInUp 0.8s 0.1s forwards; }
+        /* --- ОБЩИЕ СТИЛИ ЭКРАНОВ --- */
+        .screen-container { display: none; flex-direction: column; align-items: center; width: 100%; max-width: 360px; }
+        .screen-header { font-family: 'Russo One', sans-serif; font-size: 24px; margin-bottom: 10px; text-shadow: 0 4px 15px rgba(0,0,0,0.9); opacity: 0; animation: fadeInUp 0.8s 0.1s forwards; }        .screen-subheader { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 15px; color: #e5c100; margin-bottom: 25px; line-height: 1.4; opacity: 0; animation: fadeInUp 0.8s 0.2s forwards; }
 
         /* СЕТКА КНОПОК */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; opacity: 0; animation: fadeInUp 0.8s 0.3s forwards; }
@@ -59,7 +56,7 @@
             background: linear-gradient(135deg, #FFD700, #D4AF37);
             color: #000000;
             border: none;
-            padding: 18px 5px;
+            padding: 18px 8px;
             border-radius: 14px;
             font-family: 'Montserrat', sans-serif;
             font-size: 13px;
@@ -71,19 +68,50 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 80px;
+            min-height: 75px;
             transition: transform 0.1s;
         }
         .menu-btn:active { transform: scale(0.97); }
-        .menu-btn.full-width { grid-column: span 2; margin-top: 5px; min-height: 60px; flex-direction: row; gap: 10px; font-size: 14px; letter-spacing: 1px; }
+        .menu-btn.full-width { grid-column: span 2; margin-top: 5px; min-height: 55px; flex-direction: row; gap: 10px; font-size: 14px; letter-spacing: 1px; }
+        .menu-btn.bk-btn { font-size: 14px; letter-spacing: 0.5px; }
         
         /* ИКОНКИ */
         .icon-svg { width: 26px; height: 26px; margin-bottom: 6px; fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .icon-svg.green { stroke: #1b5e20; } 
         
+        /* КНОПКА ВОЙТИ / ДАЛЕЕ */
         .btn-wrapper { animation-delay: 1.2s; width: 100%; display: flex; justify-content: center; }
-        .action-btn { background: linear-gradient(135deg, #FFD700, #D4AF37); color: #000000; padding: 20px 0; min-height: 56px; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; width: 100%; max-width: 280px; cursor: pointer; box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4); text-transform: uppercase; }
+        .action-btn { background: linear-gradient(135deg, #FFD700, #D4AF37); color: #000000; padding: 20px 0; min-height: 56px; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; width: 100%; max-width: 280px; cursor: pointer; box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4); text-transform: uppercase; display: flex; align-items: center; justify-content: center; }
         .action-btn:active { transform: scale(0.98); }
+
+        /* ПОЛЕ ВВОДА СУММЫ */
+        .input-wrapper {
+            width: 100%;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.8s 0.3s forwards;
+        }
+        .amount-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #FFD700;
+            color: #FFD700;            font-size: 36px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            padding: 10px 0;
+            outline: none;
+        }
+        .amount-input::placeholder {
+            color: rgba(255, 215, 0, 0.3);
+        }
+        /* Убираем стрелочки у input type number */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -96,13 +124,13 @@
         <div class="tagline-ctrl anim-element">Твой контроль.</div>
         <div class="btn-wrapper anim-element">
             <button class="action-btn" id="enterBtn">ВОЙТИ</button>
-        </div>    </div>
+        </div>
+    </div>
 
     <!-- ЭКРАН 2: ГЛАВНОЕ МЕНЮ -->
-    <div id="main-menu">
-        <div class="menu-header">Главное меню</div>
+    <div id="main-menu" class="screen-container">
+        <div class="screen-header">Главное меню</div>
         <div class="menu-grid">
-            <!-- Кнопка Мои ставки с иконкой -->
             <button class="menu-btn" id="toBetsBtn">
                 <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="10 9 9 9 8 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 Мои ставки
@@ -116,9 +144,8 @@
                 Мои выводы
             </button>
             <button class="menu-btn">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Мои фрибеты
-            </button>
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 12v10H4V12" stroke="currentColor" stroke-width="2"/><path d="M2 7h20v5H2z" stroke="currentColor" stroke-width="2"/><path d="M12 22V7" stroke="currentColor" stroke-width="2"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                Мои фрибеты            </button>
             <button class="menu-btn full-width">
                 <svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 Моя статистика
@@ -127,38 +154,102 @@
     </div>
 
     <!-- ЭКРАН 3: МОИ СТАВКИ -->
-    <div id="bets-screen">
-        <div class="bets-header">Мои ставки</div>
+    <div id="bets-screen" class="screen-container">
+        <div class="screen-header">Мои ставки</div>
         <div class="menu-grid">
-            <!-- 1. Внести ставку -->
-            <button class="menu-btn" onclick="showAlert('Внести')">
+            <button class="menu-btn" id="toPlaceBetBtn">
                 <svg class="icon-svg green" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>
                 Внести ставку
             </button>
-            
-            <!-- 2. Рассчитать ставку (Иконка калькулятора/%) -->
             <button class="menu-btn" onclick="showAlert('Рассчитать')">
                 <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 11h16M4 16h16M9 11v9M15 11v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 6h16v5H4z" stroke="currentColor" stroke-width="2"/></svg>
                 Рассчитать ставку
             </button>
-            
-            <!-- 3. История ставок (Иконка списка/документа) -->
             <button class="menu-btn" onclick="showAlert('История')">
                 <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                История ставок            </button>
-            
-            <!-- 4. Очистить историю -->
+                История ставок
+            </button>
             <button class="menu-btn" onclick="showAlert('Очистить')">
                 <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Очистить историю
             </button>
-            
-            <!-- 5. В главное меню -->
             <button class="menu-btn full-width" id="backToMenuBtn">
                 <svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 В главное меню
             </button>
         </div>
+    </div>
+
+    <!-- ЭКРАН 4: ВНЕСИ СТАВКУ (ВЫБОР БК) -->
+    <div id="place-bet-screen" class="screen-container">
+        <div class="screen-header">Внести ставку</div>
+        <div class="screen-subheader">В какой букмекерской конторе<br>сделали ставку?</div>
+        <div class="menu-grid">
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('Фонбет')">Фонбет</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('Pari')">Pari</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('BetBoom')">BetBoom</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('Marathon.bet')">Marathon.bet</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('OlimpBet')">OlimpBet</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('BetCity')">BetCity</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('Winline')">Winline</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('Лига ставок')">Лига ставок</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('Zenit')">Zenit</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('MelBet')">MelBet</button>            <button class="menu-btn bk-btn" onclick="showSportsScreen('Leon.ru')">Leon.ru</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('Tennisi.bet')">Tennisi.bet</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('Bettery')">Bettery</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('BET-M')">BET-M</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('БалтБет')">БалтБет</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('СпортБет')">СпортБет</button>
+            <button class="menu-btn bk-btn" onclick="showSportsScreen('24bet.ru')">24bet.ru</button>
+            <button class="menu-btn full-width" id="backToBetsBtn">
+                <svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Вернуться назад
+            </button>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 5: ВЫБОР ВИДА СПОРТА -->
+    <div id="sports-screen" class="screen-container">
+        <div class="screen-header">Внести ставку</div>
+        <div class="screen-subheader">На какой вид спорта<br>вы сделали ставку?</div>
+        <div class="menu-grid">
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Футбол')">Футбол</button>
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Хоккей')">Хоккей</button>
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Баскетбол')">Баскетбол</button>
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Волейбол')">Волейбол</button>
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Киберспорт')">Киберспорт</button>
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Теннис')">Теннис</button>
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Бильярд/Снукер')">Бильярд/Снукер</button>
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Единоборства/Бокс')">Единоборства/Бокс</button>
+            <button class="menu-btn bk-btn" onclick="showAmountScreen('Другое')">Другое</button>
+            <button class="menu-btn full-width" id="backToBKBtn">
+                <svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Вернуться назад
+            </button>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 6: ВВОД СУММЫ (НОВЫЙ) -->
+    <div id="amount-screen" class="screen-container">
+        <div class="screen-header">Внести ставку</div>
+        <div class="screen-subheader">Какую сумму вы поставили?</div>
+        
+        <div class="input-wrapper">
+            <!-- inputmode="numeric" вызывает цифровую клавиатуру -->
+            <input type="number" inputmode="numeric" id="amount-input" class="amount-input" placeholder="0">
+        </div>
+        
+        <div class="btn-wrapper" style="animation-delay: 0.4s;">
+            <button class="action-btn" id="nextAmountBtn">
+                Далее
+                <!-- Иконка стрелки вправо -->
+                <svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px; display: inline-block; vertical-align: middle;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>            </button>
+        </div>
+        
+        <button class="menu-btn full-width" id="backToSportsBtn" style="margin-top: 20px; width: 100%;">
+            <svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Вернуться назад
+        </button>
     </div>
 
     <script>
@@ -168,10 +259,18 @@
         const enterBtn = document.getElementById('enterBtn');
         const toBetsBtn = document.getElementById('toBetsBtn');
         const backToMenuBtn = document.getElementById('backToMenuBtn');
+        const toPlaceBetBtn = document.getElementById('toPlaceBetBtn');
+        const backToBetsBtn = document.getElementById('backToBetsBtn');
+        const backToBKBtn = document.getElementById('backToBKBtn');
+        const backToSportsBtn = document.getElementById('backToSportsBtn');
+        const nextAmountBtn = document.getElementById('nextAmountBtn');
         
         const welcomeScreen = document.getElementById('welcome-screen');
         const mainMenu = document.getElementById('main-menu');
         const betsScreen = document.getElementById('bets-screen');
+        const placeBetScreen = document.getElementById('place-bet-screen');
+        const sportsScreen = document.getElementById('sports-screen');
+        const amountScreen = document.getElementById('amount-screen');
 
         function switchScreen(from, to) {
             from.style.display = 'none';
@@ -179,9 +278,38 @@
             Telegram.WebApp.HapticFeedback.impactOccurred('medium');
         }
 
+        // Навигация
         enterBtn.addEventListener('click', () => switchScreen(welcomeScreen, mainMenu));
         toBetsBtn.addEventListener('click', () => switchScreen(mainMenu, betsScreen));
         backToMenuBtn.addEventListener('click', () => switchScreen(betsScreen, mainMenu));
+        toPlaceBetBtn.addEventListener('click', () => switchScreen(betsScreen, placeBetScreen));
+        backToBetsBtn.addEventListener('click', () => switchScreen(placeBetScreen, betsScreen));
+        backToBKBtn.addEventListener('click', () => switchScreen(sportsScreen, placeBetScreen));
+        backToSportsBtn.addEventListener('click', () => switchScreen(amountScreen, sportsScreen));
+
+        // Открытие экрана выбора спорта
+        function showSportsScreen(bkName) {
+            console.log("Selected BK:", bkName);
+            switchScreen(placeBetScreen, sportsScreen);
+        }
+        // Открытие экрана ввода суммы
+        function showAmountScreen(sportName) {
+            console.log("Selected Sport:", sportName);
+            switchScreen(sportsScreen, amountScreen);
+            // Фокус на поле ввода, чтобы сразу открывалась клавиатура
+            setTimeout(() => {
+                document.getElementById('amount-input').focus();
+            }, 300);
+        }
+
+        // Кнопка Далее
+        nextAmountBtn.addEventListener('click', () => {
+            const val = document.getElementById('amount-input').value;
+            if(val) {
+                Telegram.WebApp.showAlert('Сумма: ' + val);
+                Telegram.WebApp.HapticFeedback.impactOccurred('light');
+            }
+        });
 
         function showAlert(action) {
             Telegram.WebApp.showAlert('Раздел "' + action + '" скоро откроется!');
@@ -189,4 +317,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
