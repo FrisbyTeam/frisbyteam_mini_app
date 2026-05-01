@@ -27,37 +27,68 @@
             overflow: hidden;
         }
         
-        /* ЛОГОТИП */
+        /* АНИМАЦИЯ (Плавное появление снизу) */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ОБЩИЕ СТИЛИ ДЛЯ АНИМИРУЕМЫХ ЭЛЕМЕНТОВ */
+        .anim-element {
+            opacity: 0; /* Скрыто до начала анимации */
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        /* ЛОГОТИП (Появляется сразу) */
         .logo {
             width: 80%;
             max-width: 320px;
             height: auto;
-            margin-bottom: 0px; /* РАЗРЫВ УБРАН */
+            margin-bottom: 0px;
             display: block;
             margin-left: auto;
-            margin-right: auto;
+            margin-right: auto;            animation-delay: 0s; /* 0 секунд */
         }
 
-        /* ЗАГОЛОВОК */
+        /* ЗАГОЛОВОК FrisbyTeam (Появляется сразу с лого) */
         .brand {
             font-family: 'Russo One', sans-serif;
             font-size: 28px;
-            margin-bottom: 2px; /* Почти нет отступа до текста */
+            margin-bottom: 4px;
             color: var(--gold-bright);
             text-shadow: 0 4px 15px rgba(0,0,0,0.9);
             text-transform: uppercase;
             letter-spacing: 1px;
+            animation-delay: 0.2s; /* Чуть позже */
         }
 
-        /* ПОДЗАГОЛОВОК (УВЕЛИЧЕН) */
-        .tagline {
+        /* ТЕКСТ "Твоя статистика" (Появляется через 0.6 сек) */
+        .tagline-stat {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700; /* Жирнее */
-            font-size: 20px;  /* Крупнее */
-            color: #FFD700;   /* Чуть ярче */
+            font-weight: 700;
+            font-size: 20px;
+            color: #FFD700;
             line-height: 1.3;
-            margin-bottom: 28px;
+            margin-bottom: 2px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+            animation-delay: 0.6s;
+        }
+
+        /* ТЕКСТ "Твой контроль" (Появляется через 0.9 сек) */
+        .tagline-ctrl {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #FFD700;
+            line-height: 1.3;
+            margin-bottom: 25px; /* Отступ до кнопки */
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+            animation-delay: 0.9s;
+        }
+
+        /* ОБЕРТКА КНОПКИ (Появляется последней) */
+        .btn-wrapper {
+            animation-delay: 1.2s; /* Самая последняя */
         }
 
         /* КНОПКА */
@@ -65,8 +96,7 @@
             background: linear-gradient(135deg, #FFD700, #D4AF37);
             color: #000000;
             border: 1px solid #FFD700;
-            padding: 14px 0;
-            border-radius: 12px;
+            padding: 14px 0;            border-radius: 12px;
             font-family: 'Montserrat', sans-serif;
             font-size: 16px;
             font-weight: 700;
@@ -80,10 +110,20 @@
     </style>
 </head>
 <body>
-    <img class="logo" src="logo.png" alt="FrisbyTeam Logo">
-    <div class="brand">FrisbyTeam</div>
-    <div class="tagline">Твоя статистика.<br>Твой контроль.</div>
-    <button class="action-btn" onclick="Telegram.WebApp.showAlert('Раздел в разработке!')">Открыть амбар</button>
+    <!-- Логотип -->
+    <img class="logo anim-element" src="logo.png" alt="FrisbyTeam Logo">
+
+    <!-- Заголовок -->
+    <div class="brand anim-element">FrisbyTeam</div>
+
+    <!-- Тексты (Разделены для поочередного появления) -->
+    <div class="tagline-stat anim-element">Твоя статистика.</div>
+    <div class="tagline-ctrl anim-element">Твой контроль.</div>
+
+    <!-- Кнопка в обертке -->
+    <div class="btn-wrapper anim-element">
+        <button class="action-btn" onclick="Telegram.WebApp.showAlert('Раздел в разработке!')">Открыть амбар</button>
+    </div>
 
     <script>
         Telegram.WebApp.ready();
