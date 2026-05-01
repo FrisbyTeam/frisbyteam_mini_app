@@ -11,11 +11,11 @@
             --gold: #D4AF37;
             --gold-bright: #FFD700;
             --black: #050505;
+            --green: #4CAF50;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Montserrat', sans-serif;
-            /* Единый фон для всего приложения */
             background: linear-gradient(135deg, var(--black) 0%, #111 60%, #2a2005 85%, var(--gold) 100%);
             color: var(--gold-bright);
             min-height: 100vh;
@@ -28,7 +28,6 @@
             padding: 20px;
         }
 
-        /* АНИМАЦИЯ */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -39,119 +38,51 @@
         }
 
         /* --- ЭКРАН 1: ПРИВЕТСТВИЕ --- */
-        #welcome-screen {
-            display: flex; /* По умолчанию видим */
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .logo {
-            width: 80%;            max-width: 220px;
-            height: auto;
-            margin-bottom: 0px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            animation-delay: 0s;
-        }
-        .brand {
-            font-family: 'Russo One', sans-serif;
-            font-size: 28px;
-            margin-bottom: 4px;
-            color: var(--gold-bright);
-            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation-delay: 0.2s;
-        }
-        .tagline-stat, .tagline-ctrl {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 19px;
-            color: #FFD700;
-            line-height: 1.4;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
-        }
+        #welcome-screen { display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .logo { width: 80%; max-width: 320px; height: auto; margin-bottom: 0px; animation-delay: 0s; }
+        .brand { font-family: 'Russo One', sans-serif; font-size: 28px; margin-bottom: 4px; animation-delay: 0.2s; }
+        .tagline-stat, .tagline-ctrl { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 19px; color: #FFD700; line-height: 1.4; }
         .tagline-stat { margin-bottom: 2px; animation-delay: 0.6s; }
         .tagline-ctrl { margin-bottom: 30px; animation-delay: 0.9s; }
 
         /* --- ЭКРАН 2: ГЛАВНОЕ МЕНЮ --- */
-        #main-menu {
-            display: none; /* Скрыто по умолчанию */
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 360px;
-        }
+        #main-menu { display: none; flex-direction: column; align-items: center; width: 100%; max-width: 360px; }
+        .menu-header { font-family: 'Russo One', sans-serif; font-size: 24px; margin-bottom: 30px; animation: fadeInUp 0.8s 0.1s forwards; opacity: 0; }        
+        /* --- ЭКРАН 3: МОИ СТАВКИ --- */
+        #bets-screen { display: none; flex-direction: column; align-items: center; width: 100%; max-width: 360px; }
+        .bets-header { font-family: 'Russo One', sans-serif; font-size: 24px; margin-bottom: 25px; text-shadow: 0 4px 15px rgba(0,0,0,0.9); opacity: 0; animation: fadeInUp 0.8s 0.1s forwards; }
 
-        .menu-header {
-            font-family: 'Russo One', sans-serif;
-            font-size: 24px;
-            margin-bottom: 30px;
-            color: var(--gold-bright);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.9);
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.1s forwards;
-        }
-        /* Сетка кнопок */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Две колонки */
-            gap: 15px; /* Отступы между кнопками */
-            width: 100%;
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.3s forwards;
-        }
-
-        /* Кнопки меню */
+        /* СЕТКА КНОПОК */
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; opacity: 0; animation: fadeInUp 0.8s 0.3s forwards; }
+        
         .menu-btn {
             background: linear-gradient(135deg, #FFD700, #D4AF37);
             color: #000000;
             border: none;
-            padding: 16px 10px;
-            border-radius: 12px;
+            padding: 18px 5px;
+            border-radius: 14px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
             transition: transform 0.1s;
         }
         .menu-btn:active { transform: scale(0.97); }
-
-        /* Кнопка на всю ширину */
-        .menu-btn.full-width {
-            grid-column: span 2; /* Растянуть на 2 колонки */
-            margin-top: 0px;
-        }
-
-        /* Кнопка ВОЙТИ */
-        .btn-wrapper {
-            animation-delay: 1.2s;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-        .action-btn {
-            background: linear-gradient(135deg, #FFD700, #D4AF37);
-            color: #000000;
-            border: none;
-            padding: 20px 0;
-            min-height: 56px;
-            border-radius: 14px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 17px;
-            font-weight: 700;            width: 100%;
-            max-width: 280px;
-            cursor: pointer;
-            box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+        .menu-btn.full-width { grid-column: span 2; margin-top: 5px; min-height: 60px; flex-direction: row; gap: 10px; font-size: 14px; letter-spacing: 1px; }
+        
+        /* ИКОНКИ */
+        .icon-svg { width: 26px; height: 26px; margin-bottom: 6px; fill: none; stroke: #000000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .icon-svg.green { stroke: #1b5e20; } 
+        
+        .btn-wrapper { animation-delay: 1.2s; width: 100%; display: flex; justify-content: center; }
+        .action-btn { background: linear-gradient(135deg, #FFD700, #D4AF37); color: #000000; padding: 20px 0; min-height: 56px; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; width: 100%; max-width: 280px; cursor: pointer; box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4); text-transform: uppercase; }
         .action-btn:active { transform: scale(0.98); }
     </style>
 </head>
@@ -165,18 +96,68 @@
         <div class="tagline-ctrl anim-element">Твой контроль.</div>
         <div class="btn-wrapper anim-element">
             <button class="action-btn" id="enterBtn">ВОЙТИ</button>
-        </div>
-    </div>
+        </div>    </div>
 
     <!-- ЭКРАН 2: ГЛАВНОЕ МЕНЮ -->
     <div id="main-menu">
         <div class="menu-header">Главное меню</div>
         <div class="menu-grid">
-            <button class="menu-btn">Мои ставки</button>
-            <button class="menu-btn">Мои депозиты</button>
-            <button class="menu-btn">Мои выводы</button>
-            <button class="menu-btn">Мои фрибеты</button>
-            <button class="menu-btn full-width">Моя статистика</button>
+            <!-- Кнопка Мои ставки с иконкой -->
+            <button class="menu-btn" id="toBetsBtn">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="10 9 9 9 8 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Мои ставки
+            </button>
+            <button class="menu-btn">
+                <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="2"/></svg>
+                Мои депозиты
+            </button>
+            <button class="menu-btn">
+                <svg class="icon-svg" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2" stroke="currentColor" stroke-width="2"/><line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="2"/></svg>
+                Мои выводы
+            </button>
+            <button class="menu-btn">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Мои фрибеты
+            </button>
+            <button class="menu-btn full-width">
+                <svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Моя статистика
+            </button>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 3: МОИ СТАВКИ -->
+    <div id="bets-screen">
+        <div class="bets-header">Мои ставки</div>
+        <div class="menu-grid">
+            <!-- 1. Внести ставку -->
+            <button class="menu-btn" onclick="showAlert('Внести')">
+                <svg class="icon-svg green" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>
+                Внести ставку
+            </button>
+            
+            <!-- 2. Рассчитать ставку (Иконка калькулятора/%) -->
+            <button class="menu-btn" onclick="showAlert('Рассчитать')">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 11h16M4 16h16M9 11v9M15 11v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 6h16v5H4z" stroke="currentColor" stroke-width="2"/></svg>
+                Рассчитать ставку
+            </button>
+            
+            <!-- 3. История ставок (Иконка списка/документа) -->
+            <button class="menu-btn" onclick="showAlert('История')">
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                История ставок            </button>
+            
+            <!-- 4. Очистить историю -->
+            <button class="menu-btn" onclick="showAlert('Очистить')">
+                <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Очистить историю
+            </button>
+            
+            <!-- 5. В главное меню -->
+            <button class="menu-btn full-width" id="backToMenuBtn">
+                <svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                В главное меню
+            </button>
         </div>
     </div>
 
@@ -184,18 +165,28 @@
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
 
-        // Логика переключения экранов
         const enterBtn = document.getElementById('enterBtn');
+        const toBetsBtn = document.getElementById('toBetsBtn');
+        const backToMenuBtn = document.getElementById('backToMenuBtn');
+        
         const welcomeScreen = document.getElementById('welcome-screen');
         const mainMenu = document.getElementById('main-menu');
+        const betsScreen = document.getElementById('bets-screen');
 
-        enterBtn.addEventListener('click', () => {
-            // Скрываем приветствие
-            welcomeScreen.style.display = 'none';
-            // Показываем меню
-            mainMenu.style.display = 'flex';
-            // Вибрация для ощущения нажатия (если телефон поддерживает)            Telegram.WebApp.HapticFeedback.impactOccurred('medium');
-        });
+        function switchScreen(from, to) {
+            from.style.display = 'none';
+            to.style.display = 'flex';
+            Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+        }
+
+        enterBtn.addEventListener('click', () => switchScreen(welcomeScreen, mainMenu));
+        toBetsBtn.addEventListener('click', () => switchScreen(mainMenu, betsScreen));
+        backToMenuBtn.addEventListener('click', () => switchScreen(betsScreen, mainMenu));
+
+        function showAlert(action) {
+            Telegram.WebApp.showAlert('Раздел "' + action + '" скоро откроется!');
+            Telegram.WebApp.HapticFeedback.impactOccurred('light');
+        }
     </script>
 </body>
 </html>
