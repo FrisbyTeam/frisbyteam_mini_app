@@ -28,10 +28,15 @@
             overflow: hidden;
         }
         .logo {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.3));
+            width: 100%;          /* Подстраивается под ширину */
+            max-width: 150px;     /* Ограничение, чтобы не был гигантским (увеличил) */
+            height: auto;         /* САМОЕ ВАЖНОЕ: сохраняет пропорции, убирает сжатие */
+            margin-bottom: 24px;
+            display: block;
+            margin-left: auto;    /* Центрирование */
+            margin-right: auto;   /* Центрирование */
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4));
+        }
         }
         .brand {
             font-family: 'Russo One', sans-serif;
