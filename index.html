@@ -58,9 +58,9 @@
         /* Текст прибыли/убытка */
         .result-info-text { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: #ffffff; margin: 15px 0; opacity: 0.9; animation: fadeInUp 0.6s forwards; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
 
-        /* История ставок / Депозитов / Выводов */
+        /* История */
         .history-item, .dep-history-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; width: 100%; }
-        .history-card, .dep-card, .with-card { flex: 1; padding: 12px; border-radius: 12px; background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; color: #FFD700; font-size: 13px; font-weight: 500; text-align: left; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+        .history-card, .dep-card, .with-card, .freebet-card { flex: 1; padding: 12px; border-radius: 12px; background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; color: #FFD700; font-size: 13px; font-weight: 500; text-align: left; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
         .history-card .row1, .history-card .row2 { display: flex; flex-wrap: wrap; gap: 5px 10px; margin-bottom: 4px; }
         .history-card .row2 { margin-bottom: 0; }
         .history-card .badge { font-weight: 700; }
@@ -72,7 +72,6 @@
         .history-icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .history-nav-btns, .vert-btns-container { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 360px; margin-top: 20px; opacity: 0; animation: fadeInUp 0.8s 0.3s forwards; }
 
-        /* Кнопки и карточки в "Рассчитать ставку" */
         .bet-row-btn { background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; color: #FFD700; padding: 15px; border-radius: 12px; margin-bottom: 10px; width: 100%; text-align: left; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; gap: 5px; }
         .calc-btn { background: linear-gradient(135deg, #FFD700, #D4AF37); color: #000; border: none; padding: 20px; border-radius: 14px; font-size: 18px; font-weight: 700; text-transform: uppercase; cursor: pointer; margin-bottom: 15px; width: 100%; }
         .calc-btn.win { background: linear-gradient(135deg, #4CAF50, #2E7D32); color: #fff; }
@@ -94,10 +93,10 @@
 <body>
     <div id="welcome-screen"><img class="logo anim-element" src="logo.png" alt="FrisbyTeam Logo"><div class="brand anim-element">FrisbyTeam</div><div class="tagline-stat anim-element">Твоя статистика.</div><div class="tagline-ctrl anim-element">Твой контроль.</div><div class="btn-wrapper anim-element"><button class="action-btn" id="enterBtn" type="button">ВОЙТИ</button></div></div>
     
-    <div id="main-menu" class="screen-container"><div class="screen-header">Главное меню</div><div class="menu-grid"><button class="menu-btn" id="toBetsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="10 9 9 9 8 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Мои ставки</button><button class="menu-btn" id="toDepositsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="2"/></svg>Мои депозиты</button><button class="menu-btn" id="toWithdrawBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Мои выводы</button><button class="menu-btn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 12v10H4V12" stroke="currentColor" stroke-width="2"/><path d="M2 7h20v5H2z" stroke="currentColor" stroke-width="2"/><path d="M12 22V7" stroke="currentColor" stroke-width="2"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/></svg>Мои фрибеты</button><button class="menu-btn full-width" id="calcBtn" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Моя статистика</button></div></div>
+    <div id="main-menu" class="screen-container"><div class="screen-header">Главное меню</div><div class="menu-grid"><button class="menu-btn" id="toBetsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="10 9 9 9 8 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Мои ставки</button><button class="menu-btn" id="toDepositsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" stroke-width="2"/></svg>Мои депозиты</button><button class="menu-btn" id="toWithdrawBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Мои выводы</button><button class="menu-btn" id="toFreebetsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 12v10H4V12" stroke="currentColor" stroke-width="2"/><path d="M2 7h20v5H2z" stroke="currentColor" stroke-width="2"/><path d="M12 22V7" stroke="currentColor" stroke-width="2"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/></svg>Мои фрибеты</button><button class="menu-btn full-width" id="calcBtn" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Моя статистика</button></div></div>
     
-    <div id="bets-screen" class="screen-container">        <div class="screen-header">Мои ставки</div>
-        <div class="menu-grid">
+    <div id="bets-screen" class="screen-container">
+        <div class="screen-header">Мои ставки</div>        <div class="menu-grid">
             <button class="menu-btn" id="toPlaceBetBtn" type="button"><svg class="icon-svg green" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>Внести ставку</button>
             <button class="menu-btn" id="toCalcBtn" type="button" onclick="window.renderBetsList(); window.switchScreen(window.els.bets, window.els.uncalc);"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M4 11h16M4 16h16M9 11v9M15 11v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 6h16v5H4z" stroke="currentColor" stroke-width="2"/></svg>Рассчитать ставку</button>
             <button class="menu-btn" id="historyBtn" type="button" onclick="window.showHistory()"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/></svg>История ставок</button>
@@ -110,13 +109,16 @@
     
     <div id="place-bet-screen" class="screen-container"><div class="screen-header">Внести ставку</div><div class="screen-subheader">В какой букмекерской конторе<br>сделали ставку?</div><div class="menu-grid"><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Фонбет')">Фонбет</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Pari')">Pari</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('BetBoom')">BetBoom</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Marathon.bet')">Marathon.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('OlimpBet')">OlimpBet</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('BetCity')">BetCity</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Winline')">Winline</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Лига ставок')">Лига ставок</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Zenit')">Zenit</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('MelBet')">MelBet</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Leon.ru')">Leon.ru</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Tennisi.bet')">Tennisi.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('Bettery')">Bettery</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('BET-M')">BET-M</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('БалтБет')">БалтБет</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('СпортБет')">СпортБет</button><button class="menu-btn bk-btn" type="button" onclick="window.showPaymentScreen('24bet.ru')">24bet.ru</button><button class="menu-btn full-width" id="backToBetsBtn" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button></div></div>
     
-    <div id="payment-screen" class="screen-container"><div class="screen-header">Внести ставку</div><div class="screen-subheader">Что вы поставили?</div><div style="display: flex; flex-direction: column; gap: 15px; width: 100%; opacity: 0; animation: fadeInUp 0.8s 0.3s forwards;"><button class="menu-btn bk-btn full-width" type="button" onclick="window.selectAndGo('method', 'Real', window.els.type)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M6 8h12M6 16h12" stroke="currentColor" stroke-width="2"/></svg>Реальные деньги</button><button class="menu-btn bk-btn full-width" id="btn-freebet" type="button" onclick="window.handleFreebetClick()"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 12v10H4V12" stroke="currentColor" stroke-width="2"/><path d="M2 7h20v5H2z" stroke="currentColor" stroke-width="2"/><path d="M12 22V7" stroke="currentColor" stroke-width="2"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/></svg>Фрибет</button><button class="menu-btn bk-btn full-width" id="backToBKFromPaymentBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button></div></div>
+    <div id="payment-screen" class="screen-container"><div class="screen-header">Внести ставку</div><div class="screen-subheader">Что вы поставили?</div><div style="display: flex; flex-direction: column; gap: 15px; width: 100%; opacity: 0; animation: fadeInUp 0.8s 0.3s forwards;">
+        <button class="menu-btn bk-btn full-width" type="button" onclick="window.selectAndGo('method', 'Real', window.els.type)"><svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M6 8h12M6 16h12" stroke="currentColor" stroke-width="2"/></svg>Реальные деньги</button>
+        <div id="payment-freebet-container" style="display: flex; flex-direction: column; gap: 15px;"></div>
+        <button class="menu-btn bk-btn full-width" id="backToBKFromPaymentBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button>
+    </div></div>
     
     <div id="bet-type-screen" class="screen-container"><div class="screen-header">Внести ставку</div><div class="screen-subheader">Выберите тип вашей ставки</div><div class="menu-grid"><button class="menu-btn bk-btn" type="button" onclick="window.selectAndGo('type', 'Pre-match (Линия)', window.els.kind)">Pre-match<br>(Линия)</button><button class="menu-btn bk-btn" type="button" onclick="window.selectAndGo('type', 'Live-ставка', window.els.kind)">Live-ставка</button></div><button class="menu-btn full-width" id="backBetTypeBtn" style="margin-top: 20px; width: 100%;" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button></div>
     
     <div id="bet-kind-screen" class="screen-container"><div class="screen-header">Внести ставку</div><div class="screen-subheader">Выберите вид вашей ставки</div><div class="menu-grid"><button class="menu-btn bk-btn" type="button" onclick="window.selectAndGo('kind', 'Одинар', window.els.sport)">Одинар</button><button class="menu-btn bk-btn" type="button" onclick="window.selectAndGo('kind', 'Двойник', window.els.sport)">Двойник</button><button class="menu-btn bk-btn" type="button" onclick="window.selectAndGo('kind', 'Тройник', window.els.sport)">Тройник</button><button class="menu-btn bk-btn" type="button" onclick="window.selectAndGo('kind', 'Экспресс', window.els.sport)">Экспресс</button></div><button class="menu-btn full-width" id="backBetKindBtn" style="margin-top: 20px; width: 100%;" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button></div>
     
-    <!-- ЭКРАН ВЫБОРА СПОРТА (ДОБАВЛЕНА КНОПКА "НЕСКОЛЬКО ВИДОВ СПОРТА") -->
     <div id="sports-screen" class="screen-container"><div class="screen-header">Внести ставку</div><div class="screen-subheader">На какой вид спорта<br>вы сделали ставку?</div><div class="menu-grid">
         <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Футбол')">Футбол</button>
         <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Хоккей')">Хоккей</button>
@@ -144,138 +146,29 @@
     <div id="result-win-screen" class="screen-container"><div class="screen-header anim-element" style="animation-delay: 0s;">Поздравляем!</div><div class="screen-subheader anim-element" style="animation-delay: 0.1s;">Так держать!<br>Ваша ставка под номером <strong id="win-bet-id" style="font-weight: 800; font-size: 22px;">...</strong> учтена в статистике!</div><div id="win-profit-text" class="result-info-text"></div><div class="result-nav-container"><button class="result-nav-btn win" id="winToStatsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>В мою статистику</button><button class="result-nav-btn win" id="winBackBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button><button class="result-nav-btn win" id="winToMainBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
     <div id="result-loss-screen" class="screen-container"><div class="screen-header anim-element" style="animation-delay: 0s;">Экая оказия!</div><div class="screen-subheader anim-element" style="animation-delay: 0.1s;">Не вешайте нос! Все победы впереди!<br>Ваша ставка под номером <strong id="loss-bet-id" style="font-weight: 800; font-size: 22px;">...</strong> учтена в статистике!</div><div id="loss-profit-text" class="result-info-text"></div><div class="result-nav-container"><button class="result-nav-btn loss" id="lossToStatsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>В мою статистику</button><button class="result-nav-btn loss" id="lossBackBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button><button class="result-nav-btn loss" id="lossToMainBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
     <div id="result-push-screen" class="screen-container"><div class="screen-header anim-element" style="animation-delay: 0s;">Неплохо!</div><div class="screen-subheader anim-element" style="animation-delay: 0.1s;">Как будто и не ставил!<br>Ваша ставка под номером <strong id="push-bet-id" style="font-weight: 800; font-size: 22px;">...</strong> учтена в статистике!</div><div class="result-nav-container"><button class="result-nav-btn push" id="pushToStatsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>В мою статистику</button><button class="result-nav-btn push" id="pushBackBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button><button class="result-nav-btn push" id="pushToMainBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
-
-    <!-- ЭКРАН ИСТОРИИ СТАВОК -->    <div id="history-screen" class="screen-container"><div class="screen-header">История ставок</div><div id="history-list" style="width:100%; opacity:0; animation:fadeInUp 0.8s 0.2s forwards; max-height: 40vh; overflow-y: auto;"></div><div class="history-nav-btns"><button class="menu-btn full-width" id="hist-prev-btn" type="button">Назад</button><button class="menu-btn full-width" id="hist-next-btn" type="button">Вперёд</button><button class="menu-btn full-width" id="hist-main-btn" type="button">В главное меню</button></div></div>
+    <!-- ЭКРАН ИСТОРИИ СТАВОК -->
+    <div id="history-screen" class="screen-container"><div class="screen-header">История ставок</div><div id="history-list" style="width:100%; opacity:0; animation:fadeInUp 0.8s 0.2s forwards; max-height: 40vh; overflow-y: auto;"></div><div class="history-nav-btns"><button class="menu-btn full-width" id="hist-prev-btn" type="button">Назад</button><button class="menu-btn full-width" id="hist-next-btn" type="button">Вперёд</button><button class="menu-btn full-width" id="hist-main-btn" type="button">В главное меню</button></div></div>
 
     <!-- ЭКРАНЫ ДЕПОЗИТОВ -->
-    <div id="deposit-main-screen" class="screen-container">
-        <div class="screen-header">Мои депозиты</div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="dep-to-bk" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>Внести депозит</button>
-            <button class="menu-btn full-width" id="dep-to-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/></svg>История депозитов</button>
-            <button class="menu-btn full-width" id="dep-main-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
-
-    <div id="deposit-bk-screen" class="screen-container">
-        <div class="screen-header">Мои депозиты</div>
-        <div class="screen-subheader">В какой конторе вы сделали депозит?</div>
-        <div class="menu-grid">
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Фонбет')">Фонбет</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Pari')">Pari</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BetBoom')">BetBoom</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Marathon.bet')">Marathon.bet</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('OlimpBet')">OlimpBet</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BetCity')">BetCity</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Winline')">Winline</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Лига ставок')">Лига ставок</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Zenit')">Zenit</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('MelBet')">MelBet</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Leon.ru')">Leon.ru</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Tennisi.bet')">Tennisi.bet</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Bettery')">Bettery</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BET-M')">BET-M</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('БалтБет')">БалтБет</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('СпортБет')">СпортБет</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('24bet.ru')">24bet.ru</button>
-        </div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="dep-bk-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
-
-    <div id="deposit-amount-screen" class="screen-container">
-        <div class="screen-header">Мои депозиты</div>
-        <div class="screen-subheader">На какую сумму внесён депозит?</div>
-        <div class="input-wrapper"><input type="number" inputmode="numeric" id="dep-amount-input" class="amount-input" placeholder="0"></div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="dep-next" type="button">Далее<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px; display: inline-block; vertical-align: middle;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button class="menu-btn full-width" id="dep-back" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Назад</button>
-            <button class="menu-btn full-width" id="dep-amount-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
-    <div id="deposit-success-screen" class="screen-container">
-        <div class="screen-header anim-element" style="animation-delay: 0s; font-size: 22px; line-height: 1.4;">Ваш депозит был<br>учтён в статистике и истории депозитов</div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="dep-to-stats" type="button">В мою статистику<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button class="menu-btn full-width" id="dep-success-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
-
-    <div id="deposit-history-screen" class="screen-container">
-        <div class="screen-header">Мои депозиты</div>
-        <div class="screen-subheader">История моих депозитов</div>
-        <div id="dep-history-list" style="width: 100%; max-height: 50vh; overflow-y: auto; opacity: 0; animation: fadeInUp 0.8s 0.2s forwards; margin-bottom: 15px;"></div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="dep-clear-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Очистить историю</button>
-            <button class="menu-btn full-width" id="dep-history-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
+    <div id="deposit-main-screen" class="screen-container"><div class="screen-header">Мои депозиты</div><div class="vert-btns-container"><button class="menu-btn full-width" id="dep-to-bk" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>Внести депозит</button><button class="menu-btn full-width" id="dep-to-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/></svg>История депозитов</button><button class="menu-btn full-width" id="dep-main-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="deposit-bk-screen" class="screen-container"><div class="screen-header">Мои депозиты</div><div class="screen-subheader">В какой конторе вы сделали депозит?</div><div class="menu-grid"><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Фонбет')">Фонбет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Pari')">Pari</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BetBoom')">BetBoom</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Marathon.bet')">Marathon.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('OlimpBet')">OlimpBet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BetCity')">BetCity</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Winline')">Winline</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Лига ставок')">Лига ставок</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Zenit')">Zenit</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('MelBet')">MelBet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Leon.ru')">Leon.ru</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Tennisi.bet')">Tennisi.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Bettery')">Bettery</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BET-M')">BET-M</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('БалтБет')">БалтБет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('СпортБет')">СпортБет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('24bet.ru')">24bet.ru</button></div><div class="vert-btns-container"><button class="menu-btn full-width" id="dep-bk-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="deposit-amount-screen" class="screen-container"><div class="screen-header">Мои депозиты</div><div class="screen-subheader">На какую сумму внесён депозит?</div><div class="input-wrapper"><input type="number" inputmode="numeric" id="dep-amount-input" class="amount-input" placeholder="0"></div><div class="vert-btns-container"><button class="menu-btn full-width" id="dep-next" type="button">Далее<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px; display: inline-block; vertical-align: middle;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="menu-btn full-width" id="dep-back" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Назад</button><button class="menu-btn full-width" id="dep-amount-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="deposit-success-screen" class="screen-container"><div class="screen-header anim-element" style="animation-delay: 0s; font-size: 22px; line-height: 1.4;">Ваш депозит был<br>учтён в статистике и истории депозитов</div><div class="vert-btns-container"><button class="menu-btn full-width" id="dep-to-stats" type="button">В мою статистику<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="menu-btn full-width" id="dep-success-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="deposit-history-screen" class="screen-container"><div class="screen-header">Мои депозиты</div><div class="screen-subheader">История моих депозитов</div><div id="dep-history-list" style="width: 100%; max-height: 50vh; overflow-y: auto; opacity: 0; animation: fadeInUp 0.8s 0.2s forwards; margin-bottom: 15px;"></div><div class="vert-btns-container"><button class="menu-btn full-width" id="dep-clear-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Очистить историю</button><button class="menu-btn full-width" id="dep-history-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
 
     <!-- ЭКРАНЫ ВЫВОДОВ -->
-    <div id="withdraw-main-screen" class="screen-container">
-        <div class="screen-header">Мои выводы</div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="with-to-bk" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>Внести вывод</button>
-            <button class="menu-btn full-width" id="with-to-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/></svg>История выводов</button>
-            <button class="menu-btn full-width" id="with-main-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
+    <div id="withdraw-main-screen" class="screen-container"><div class="screen-header">Мои выводы</div><div class="vert-btns-container"><button class="menu-btn full-width" id="with-to-bk" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>Внести вывод</button><button class="menu-btn full-width" id="with-to-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/></svg>История выводов</button><button class="menu-btn full-width" id="with-main-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="withdraw-bk-screen" class="screen-container"><div class="screen-header">Мои выводы</div><div class="screen-subheader">Из какой конторы вы сделали вывод?</div><div class="menu-grid"><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Фонбет')">Фонбет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Pari')">Pari</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('BetBoom')">BetBoom</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Marathon.bet')">Marathon.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('OlimpBet')">OlimpBet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('BetCity')">BetCity</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Winline')">Winline</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Лига ставок')">Лига ставок</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Zenit')">Zenit</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('MelBet')">MelBet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Leon.ru')">Leon.ru</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Tennisi.bet')">Tennisi.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Bettery')">Bettery</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('BET-M')">BET-M</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('БалтБет')">БалтБет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('СпортБет')">СпортБет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('24bet.ru')">24bet.ru</button></div><div class="vert-btns-container"><button class="menu-btn full-width" id="with-bk-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="withdraw-amount-screen" class="screen-container"><div class="screen-header">Мои выводы</div><div class="screen-subheader">На какую сумму сделан вывод?</div><div class="input-wrapper"><input type="number" inputmode="numeric" id="with-amount-input" class="amount-input" placeholder="0"></div><div class="vert-btns-container"><button class="menu-btn full-width" id="with-next" type="button">Далее<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px; display: inline-block; vertical-align: middle;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="menu-btn full-width" id="with-back" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Назад</button><button class="menu-btn full-width" id="with-amount-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="withdraw-success-screen" class="screen-container"><div class="screen-header anim-element" style="animation-delay: 0s; font-size: 22px; line-height: 1.4;">Ваш вывод успешно<br>учтён в статистике и истории выводов!</div><div class="vert-btns-container"><button class="menu-btn full-width" id="with-to-stats" type="button">В мою статистику<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="menu-btn full-width" id="with-success-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="withdraw-history-screen" class="screen-container"><div class="screen-header">Мои выводы</div><div class="screen-subheader">История моих выводов</div><div id="with-history-list" style="width: 100%; max-height: 50vh; overflow-y: auto; opacity: 0; animation: fadeInUp 0.8s 0.2s forwards; margin-bottom: 15px;"></div><div class="vert-btns-container"><button class="menu-btn full-width" id="with-clear-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Очистить историю</button><button class="menu-btn full-width" id="with-history-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
 
-    <div id="withdraw-bk-screen" class="screen-container">
-        <div class="screen-header">Мои выводы</div>
-        <div class="screen-subheader">Из какой конторы вы сделали вывод?</div>
-        <div class="menu-grid">
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Фонбет')">Фонбет</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Pari')">Pari</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('BetBoom')">BetBoom</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Marathon.bet')">Marathon.bet</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('OlimpBet')">OlimpBet</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('BetCity')">BetCity</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Winline')">Winline</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Лига ставок')">Лига ставок</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Zenit')">Zenit</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('MelBet')">MelBet</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Leon.ru')">Leon.ru</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Tennisi.bet')">Tennisi.bet</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('Bettery')">Bettery</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('BET-M')">BET-M</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('БалтБет')">БалтБет</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('СпортБет')">СпортБет</button>
-            <button class="menu-btn bk-btn" type="button" onclick="window.selectWithBk('24bet.ru')">24bet.ru</button>
-        </div>        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="with-bk-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
-
-    <div id="withdraw-amount-screen" class="screen-container">
-        <div class="screen-header">Мои выводы</div>
-        <div class="screen-subheader">На какую сумму сделан вывод?</div>
-        <div class="input-wrapper"><input type="number" inputmode="numeric" id="with-amount-input" class="amount-input" placeholder="0"></div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="with-next" type="button">Далее<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px; display: inline-block; vertical-align: middle;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button class="menu-btn full-width" id="with-back" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Назад</button>
-            <button class="menu-btn full-width" id="with-amount-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
-
-    <div id="withdraw-success-screen" class="screen-container">
-        <div class="screen-header anim-element" style="animation-delay: 0s; font-size: 22px; line-height: 1.4;">Ваш вывод успешно<br>учтён в статистике и истории выводов!</div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="with-to-stats" type="button">В мою статистику<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-            <button class="menu-btn full-width" id="with-success-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
-
-    <div id="withdraw-history-screen" class="screen-container">
-        <div class="screen-header">Мои выводы</div>
-        <div class="screen-subheader">История моих выводов</div>
-        <div id="with-history-list" style="width: 100%; max-height: 50vh; overflow-y: auto; opacity: 0; animation: fadeInUp 0.8s 0.2s forwards; margin-bottom: 15px;"></div>
-        <div class="vert-btns-container">
-            <button class="menu-btn full-width" id="with-clear-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Очистить историю</button>
-            <button class="menu-btn full-width" id="with-history-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
+    <!-- ЭКРАНЫ ФРИБЕТОВ -->
+    <div id="freebet-main-screen" class="screen-container"><div class="screen-header">Мои фрибеты</div><div class="vert-btns-container"><button class="menu-btn full-width" id="freebet-to-bk" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>Внести фрибет</button><button class="menu-btn full-width" id="freebet-to-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/></svg>История фрибетов</button><button class="menu-btn full-width" id="freebet-main-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="freebet-bk-screen" class="screen-container"><div class="screen-header">Мои фрибеты</div><div class="screen-subheader">В какой конторе вам дали Фрибет?</div><div class="menu-grid"><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Фонбет')">Фонбет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Pari')">Pari</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('BetBoom')">BetBoom</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Marathon.bet')">Marathon.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('OlimpBet')">OlimpBet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('BetCity')">BetCity</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Winline')">Winline</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Лига ставок')">Лига ставок</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Zenit')">Zenit</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('MelBet')">MelBet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Leon.ru')">Leon.ru</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Tennisi.bet')">Tennisi.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('Bettery')">Bettery</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('BET-M')">BET-M</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('БалтБет')">БалтБет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('СпортБет')">СпортБет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectFreebetBk('24bet.ru')">24bet.ru</button></div><div class="vert-btns-container"><button class="menu-btn full-width" id="freebet-bk-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="freebet-amount-screen" class="screen-container"><div class="screen-header">Мои фрибеты</div><div class="screen-subheader">На какую сумму фрибет?</div><div class="input-wrapper"><input type="number" inputmode="numeric" id="freebet-amount-input" class="amount-input" placeholder="0"></div><div class="vert-btns-container"><button class="menu-btn full-width" id="freebet-next" type="button">Далее<svg class="icon-svg" style="width: 20px; height: 20px; margin-left: 10px; display: inline-block; vertical-align: middle;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="menu-btn full-width" id="freebet-back" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Назад</button><button class="menu-btn full-width" id="freebet-amount-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="freebet-success-screen" class="screen-container"><div class="screen-header anim-element" style="animation-delay: 0s; font-size: 22px; line-height: 1.4;">Ваш фрибет успешно<br>добавлен в систему!</div><div class="vert-btns-container"><button class="menu-btn full-width" id="freebet-success-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+    <div id="freebet-history-screen" class="screen-container"><div class="screen-header">Мои фрибеты</div><div class="screen-subheader">История моих фрибетов</div><div id="freebet-history-list" style="width: 100%; max-height: 50vh; overflow-y: auto; opacity: 0; animation: fadeInUp 0.8s 0.2s forwards; margin-bottom: 15px;"></div><div class="vert-btns-container"><button class="menu-btn full-width" id="freebet-clear-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Очистить историю</button><button class="menu-btn full-width" id="freebet-history-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
 
     <!-- POPUP УДАЛЕНИЯ -->
     <div id="delete-popup" class="popup-overlay"><div class="popup-box"><div class="popup-text">Удалить ставку из истории?</div><div style="display:flex; gap:10px;"><button class="popup-btn danger" id="delete-yes">Да</button><button class="popup-btn secondary" id="delete-no">Нет</button></div></div></div>
@@ -283,46 +176,83 @@
     <div id="comment-popup" class="popup-overlay"><div class="popup-box"><div class="screen-header" style="margin-bottom:15px;">Внести заметку</div><textarea id="comment-input" class="comment-area" placeholder="max. 500 символов" maxlength="500"></textarea><div style="display:flex; gap:10px;"><button class="popup-btn" id="comment-save">Сохранить</button><button class="popup-btn secondary" id="comment-close">Закрыть</button></div></div></div>
     <!-- POPUP ОЧИСТКИ ИСТОРИИ СТАВОК -->
     <div id="clear-popup" class="popup-overlay"><div class="popup-box"><div class="popup-text">Удалить всю историю ставок?</div><div style="display:flex; gap:10px;"><button class="popup-btn danger" id="clear-yes">Да</button><button class="popup-btn secondary" id="clear-no">Нет</button></div></div></div>
-    <!-- POPUP ФРИБЕТА -->
-    <div id="freebet-popup" class="popup-overlay"><div class="popup-box"><div class="popup-text">У вас нет записанных фрибетов.<br>Внести Фрибет?</div><button class="popup-btn" id="popup-go-to-freebets" type="button">Внести Фрибет</button></div></div>
     <!-- POPUP ОЧИСТКИ ДЕПОЗИТОВ -->
     <div id="dep-clear-popup" class="popup-overlay"><div class="popup-box"><div class="popup-text">Удалить всю историю депозитов?</div><div style="display:flex; gap:10px;"><button class="popup-btn danger" id="dep-clear-yes">Да</button><button class="popup-btn secondary" id="dep-clear-no">Нет</button></div></div></div>
     <!-- POPUP ОЧИСТКИ ВЫВОДОВ -->
     <div id="with-clear-popup" class="popup-overlay"><div class="popup-box"><div class="popup-text">Удалить всю историю выводов?</div><div style="display:flex; gap:10px;"><button class="popup-btn danger" id="with-clear-yes">Да</button><button class="popup-btn secondary" id="with-clear-no">Нет</button></div></div></div>
+    <!-- POPUP ОЧИСТКИ ФРИБЕТОВ -->
+    <div id="freebet-clear-popup" class="popup-overlay"><div class="popup-box"><div class="popup-text">Удалить всю историю фрибетов?</div><div style="display:flex; gap:10px;"><button class="popup-btn danger" id="freebet-clear-yes">Да</button><button class="popup-btn secondary" id="freebet-clear-no">Нет</button></div></div></div>
+    <!-- НОВЫЙ POPUP: ФРИБЕТ НЕ НАЙДЕН -->
+    <div id="freebet-not-found-popup" class="popup-overlay"><div class="popup-box"><div class="popup-text">Для этой конторы фрибетов не найдено</div><button class="popup-btn" id="popup-go-to-freebet-from-not-found">Внести Фрибет</button></div></div>
 
     <script>
         window.els = {
-            welcome: document.getElementById('welcome-screen'), main: document.getElementById('main-menu'), bets: document.getElementById('bets-screen'), place: document.getElementById('place-bet-screen'), payment: document.getElementById('payment-screen'), type: document.getElementById('bet-type-screen'), kind: document.getElementById('bet-kind-screen'), sport: document.getElementById('sports-screen'), amount: document.getElementById('amount-screen'), coef: document.getElementById('coef-screen'), success: document.getElementById('success-screen'), uncalc: document.getElementById('uncalculated-bets-screen'), calc: document.getElementById('calc-decision-screen'), win: document.getElementById('result-win-screen'), loss: document.getElementById('result-loss-screen'), push: document.getElementById('result-push-screen'), popup: document.getElementById('freebet-popup'), history: document.getElementById('history-screen'), deletePopup: document.getElementById('delete-popup'), commentPopup: document.getElementById('comment-popup'), clearPopup: document.getElementById('clear-popup'),            depMain: document.getElementById('deposit-main-screen'), depBk: document.getElementById('deposit-bk-screen'), depAmount: document.getElementById('deposit-amount-screen'), depSuccess: document.getElementById('deposit-success-screen'), depHistory: document.getElementById('deposit-history-screen'), depClearPopup: document.getElementById('dep-clear-popup'),
-            withMain: document.getElementById('withdraw-main-screen'), withBk: document.getElementById('withdraw-bk-screen'), withAmount: document.getElementById('withdraw-amount-screen'), withSuccess: document.getElementById('withdraw-success-screen'), withHistory: document.getElementById('withdraw-history-screen'), withClearPopup: document.getElementById('with-clear-popup')
+            welcome: document.getElementById('welcome-screen'), main: document.getElementById('main-menu'), bets: document.getElementById('bets-screen'), place: document.getElementById('place-bet-screen'), payment: document.getElementById('payment-screen'), type: document.getElementById('bet-type-screen'), kind: document.getElementById('bet-kind-screen'), sport: document.getElementById('sports-screen'), amount: document.getElementById('amount-screen'), coef: document.getElementById('coef-screen'), success: document.getElementById('success-screen'), uncalc: document.getElementById('uncalculated-bets-screen'), calc: document.getElementById('calc-decision-screen'), win: document.getElementById('result-win-screen'), loss: document.getElementById('result-loss-screen'), push: document.getElementById('result-push-screen'), history: document.getElementById('history-screen'), deletePopup: document.getElementById('delete-popup'), commentPopup: document.getElementById('comment-popup'), clearPopup: document.getElementById('clear-popup'),
+            depMain: document.getElementById('deposit-main-screen'), depBk: document.getElementById('deposit-bk-screen'), depAmount: document.getElementById('deposit-amount-screen'), depSuccess: document.getElementById('deposit-success-screen'), depHistory: document.getElementById('deposit-history-screen'), depClearPopup: document.getElementById('dep-clear-popup'),
+            withMain: document.getElementById('withdraw-main-screen'), withBk: document.getElementById('withdraw-bk-screen'), withAmount: document.getElementById('withdraw-amount-screen'), withSuccess: document.getElementById('withdraw-success-screen'), withHistory: document.getElementById('withdraw-history-screen'), withClearPopup: document.getElementById('with-clear-popup'),
+            freebetMain: document.getElementById('freebet-main-screen'), freebetBk: document.getElementById('freebet-bk-screen'), freebetAmount: document.getElementById('freebet-amount-screen'), freebetSuccess: document.getElementById('freebet-success-screen'), freebetHistory: document.getElementById('freebet-history-screen'), freebetClearPopup: document.getElementById('freebet-clear-popup'),
+            freebetNotFoundPopup: document.getElementById('freebet-not-found-popup')
         };
 
-        let betCounter = 0, currentData = {}, currentBetToCalc = null, hasFreebetsInSystem = false, historyPage = 1;
-        const ITEMS_PER_PAGE = 10;
-        let allBets = [], userDeposits = [], userWithdrawals = [];
+        let betCounter = 0, currentData = {}, currentBetToCalc = null, historyPage = 1;        const ITEMS_PER_PAGE = 10;
+        let allBets = [], userDeposits = [], userWithdrawals = [], userFreebets = [];
         let currentDeleteId = null, currentCommentId = null;
 
         if (window.Telegram && Telegram.WebApp) { try { Telegram.WebApp.ready(); Telegram.WebApp.expand(); } catch(e){} }
 
         window.switchScreen = function(from, to) { if(from) from.style.display = 'none'; if(to) to.style.display = 'flex'; if (window.Telegram && Telegram.WebApp) Telegram.WebApp.HapticFeedback?.impactOccurred('medium'); };
-        window.showPaymentScreen = function(bk) { currentData.bk = bk; window.switchScreen(window.els.place, window.els.payment); };
         
-        // ОБНОВЛЕННАЯ ФУНКЦИЯ selectAndGo (управляет кнопкой "Несколько видов спорта")
+        window.showPaymentScreen = function(bk) {
+            currentData.bk = bk;
+            const container = document.getElementById('payment-freebet-container');
+            container.innerHTML = '';
+            const bkFreebets = userFreebets.filter(f => f.bk === bk);
+            
+            if (bkFreebets.length > 0) {
+                bkFreebets.forEach(fb => {
+                    const btn = document.createElement('button');
+                    btn.className = 'menu-btn bk-btn full-width';
+                    btn.type = 'button';
+                    btn.innerHTML = `<svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 12v10H4V12" stroke="currentColor" stroke-width="2"/><path d="M2 7h20v5H2z" stroke="currentColor" stroke-width="2"/><path d="M12 22V7" stroke="currentColor" stroke-width="2"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/></svg>Фрибет (${fb.amount} ₽)`;
+                    btn.onclick = () => window.useFreebet(fb);
+                    container.appendChild(btn);
+                });
+            } else {
+                const btn = document.createElement('button');
+                btn.className = 'menu-btn bk-btn full-width';
+                btn.type = 'button';
+                btn.innerHTML = `<svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 12v10H4V12" stroke="currentColor" stroke-width="2"/><path d="M2 7h20v5H2z" stroke="currentColor" stroke-width="2"/><path d="M12 22V7" stroke="currentColor" stroke-width="2"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" stroke="currentColor" stroke-width="2" fill="none"/></svg>Фрибет`;
+                btn.onclick = () => window.els.freebetNotFoundPopup.classList.add('active');
+                container.appendChild(btn);
+            }
+            window.switchScreen(window.els.place, window.els.payment);
+        };
+
+        window.useFreebet = function(fb) {
+            userFreebets = userFreebets.filter(f => f.id !== fb.id);
+            currentData.method = 'Freebet';
+            currentData.amount = fb.amount;
+            window.switchScreen(window.els.payment, window.els.type);
+        };
+
         window.selectAndGo = function(key, value, nextScreen) {
             currentData[key] = value;
             if (nextScreen === window.els.sport) {
                 const multiBtn = document.getElementById('multi-sport-btn');
-                if (['Двойник', 'Тройник', 'Экспресс'].includes(value)) {
-                    multiBtn.style.display = 'flex';
-                } else {
-                    multiBtn.style.display = 'none';
-                }
+                if (['Двойник', 'Тройник', 'Экспресс'].includes(value)) { multiBtn.style.display = 'flex'; } else { multiBtn.style.display = 'none'; }
             }
             let current = key === 'method' ? window.els.payment : (key === 'type' ? window.els.type : window.els.kind);
             window.switchScreen(current, nextScreen);
+        };        
+        window.showAmountScreen = function(sport) { 
+            currentData.sport = sport; 
+            if (currentData.method === 'Freebet') {
+                window.switchScreen(window.els.sport, window.els.coef);
+            } else {
+                window.switchScreen(window.els.sport, window.els.amount); 
+                setTimeout(() => document.getElementById('amount-input').focus(), 300); 
+            }
         };
-        
-        window.showAmountScreen = function(sport) { currentData.sport = sport; window.switchScreen(window.els.sport, window.els.amount); setTimeout(() => document.getElementById('amount-input').focus(), 300); };
-        window.handleFreebetClick = function() { if (hasFreebetsInSystem) { window.selectAndGo('method', 'Freebet', window.els.type); } else { window.els.popup.classList.add('active'); if (window.Telegram && Telegram.WebApp) Telegram.WebApp.HapticFeedback?.impactOccurred('light'); } };
         window.showAlert = function(msg) { if (window.Telegram && Telegram.WebApp) Telegram.WebApp.showAlert(msg); };
 
         // Депозиты
@@ -341,27 +271,57 @@
             else { [...userWithdrawals].sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(withd => { const card = document.createElement('div'); card.className = 'with-card'; card.innerHTML = `<span>${withd.date}</span><span>${withd.bk}</span><span>${withd.amount} ₽</span>`; container.appendChild(card); }); }
         };
 
-        window.renderBetsList = function() {            const container = document.getElementById('bets-list-container'); container.innerHTML = '';
+        // Фрибеты
+        window.selectFreebetBk = function(bk) { currentData.freebetBk = bk; window.switchScreen(window.els.freebetBk, window.els.freebetAmount); setTimeout(() => document.getElementById('freebet-amount-input').focus(), 300); };
+        window.renderFreebetHistory = function() {
+            const container = document.getElementById('freebet-history-list'); container.innerHTML = '';
+            if (userFreebets.length === 0) { container.innerHTML = '<div style="color:#FFD700; padding:15px; text-align:center;">История пуста</div>'; }
+            else { [...userFreebets].sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(fb => { const card = document.createElement('div'); card.className = 'freebet-card'; card.innerHTML = `<span>${fb.date}</span><span>${fb.bk}</span><span>${fb.amount} ₽</span>`; container.appendChild(card); }); }
+        };
+
+        // ✅ Обновлённый рендер списка ставок (помечает фрибеты)
+        window.renderBetsList = function() {
+            const container = document.getElementById('bets-list-container'); container.innerHTML = '';
             const uncalculated = allBets.filter(b => b.status === 'uncalculated');
             if (uncalculated.length === 0) { container.innerHTML = `<div style="margin-bottom: 20px; font-size: 16px;">Не найдено не рассчитанных ставок</div>`; }
-            else { uncalculated.forEach((bet) => { const btn = document.createElement('button'); btn.className = 'bet-row-btn'; btn.innerHTML = `<strong>№${bet.id} | ${bet.bk} | ${bet.kind} | ${bet.type}</strong><span>${bet.sport} | Сумма: ${bet.amount} | Коэф: ${bet.coef}</span>`; btn.onclick = () => { currentBetToCalc = bet; window.switchScreen(window.els.uncalc, window.els.calc); }; container.appendChild(btn); }); }
+            else {
+                uncalculated.forEach((bet) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'bet-row-btn';
+                    const freebetMark = bet.method === 'Freebet' 
+                        ? `<div style="margin-top:6px; display:flex; align-items:center; gap:6px; color:#FFD700;"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg><span style="font-weight:700; font-size:11px; letter-spacing:0.5px;">ФРИБЕТ</span></div>` 
+                        : '';
+                    btn.innerHTML = `<strong>№${bet.id} | ${bet.bk} | ${bet.kind} | ${bet.type}</strong><span>${bet.sport} | Сумма: ${bet.amount} | Коэф: ${bet.coef}</span>${freebetMark}`;
+                    btn.onclick = () => { currentBetToCalc = bet; window.switchScreen(window.els.uncalc, window.els.calc); };                    container.appendChild(btn);
+                });
+            }
         };
 
         window.calculateResult = function(resultType) {
             if (!currentBetToCalc) return;
             const bet = allBets.find(b => b.id === currentBetToCalc.id);
             if(bet) bet.status = resultType;
+            
             if (resultType === 'win') {
                 const profit = (currentBetToCalc.amount * currentBetToCalc.coef) - currentBetToCalc.amount;
                 document.getElementById('win-bet-id').textContent = currentBetToCalc.id;
-                document.getElementById('win-profit-text').textContent = `Ваша чистая прибыль составила: (+${Math.round(profit)})`;
+                if (currentBetToCalc.method === 'Freebet') {
+                    document.getElementById('win-profit-text').textContent = `Ваш Фрибет выиграл! Чистая прибыль составила: (+${Math.round(profit)})`;
+                } else {
+                    document.getElementById('win-profit-text').textContent = `Ваша чистая прибыль составила: (+${Math.round(profit)})`;
+                }
                 window.switchScreen(window.els.calc, window.els.win);
             } else if (resultType === 'loss') {
                 document.getElementById('loss-bet-id').textContent = currentBetToCalc.id;
-                document.getElementById('loss-profit-text').textContent = `Ваш проигрыш составил: (-${Math.round(currentBetToCalc.amount)})`;
+                if (currentBetToCalc.method === 'Freebet') {
+                    document.getElementById('loss-profit-text').textContent = `Вы проиграли Фрибет!`;
+                } else {
+                    document.getElementById('loss-profit-text').textContent = `Ваш проигрыш составил: (-${Math.round(currentBetToCalc.amount)})`;
+                }
                 window.switchScreen(window.els.calc, window.els.loss);
             } else {
-                document.getElementById('push-bet-id').textContent = currentBetToCalc.id; window.switchScreen(window.els.calc, window.els.push);
+                document.getElementById('push-bet-id').textContent = currentBetToCalc.id; 
+                window.switchScreen(window.els.calc, window.els.push);
             }
             currentBetToCalc = null;
         };
@@ -377,9 +337,11 @@
                 pageData.forEach(bet => {
                     const statusClass = `status-${bet.status}`;
                     const statusText = bet.status === 'uncalculated' ? 'Не рассчитано' : (bet.status === 'win' ? 'Выигрыш' : (bet.status === 'loss' ? 'Проигрыш' : 'Возврат'));
+                    const freebetMark = bet.method === 'Freebet' 
+                        ? `<div style="margin-top:6px; display:flex; align-items:center; gap:6px; color:#FFD700;"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg><span style="font-weight:700; font-size:11px; letter-spacing:0.5px;">ФРИБЕТ</span></div>` 
+                        : '';
                     const el = document.createElement('div'); el.className = 'history-item';
-                    el.innerHTML = `<div class="history-card ${statusClass}"><div class="row1"><span class="badge">№${bet.id}</span> | <span>${bet.date}</span> | <span>${bet.bk}</span> | <span>${bet.type}</span> | <span>${bet.kind}</span></div><div class="row2"><span>${bet.sport}</span> | <span>Кф: ${bet.coef || '—'}</span> | <span>Сумма: ${bet.amount}</span> | <span class="badge">${statusText}</span></div>${bet.comment ? `<div style="margin-top:6px; font-style:italic; opacity:0.8; font-size:11px;">💬 ${bet.comment}</div>` : ''}</div><button class="history-icon-btn delete-btn" data-id="${bet.id}"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button><button class="history-icon-btn comment-btn" data-id="${bet.id}"><svg viewBox="0 0 24 24"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></button>`;
-                    list.appendChild(el);
+                    el.innerHTML = `<div class="history-card ${statusClass}"><div class="row1"><span class="badge">№${bet.id}</span> | <span>${bet.date}</span> | <span>${bet.bk}</span> | <span>${bet.type}</span> | <span>${bet.kind}</span></div><div class="row2"><span>${bet.sport}</span> | <span>Кф: ${bet.coef || '—'}</span> | <span>Сумма: ${bet.amount}</span> | <span class="badge">${statusText}</span></div>${bet.comment ? `<div style="margin-top:6px; font-style:italic; opacity:0.8; font-size:11px;">💬 ${bet.comment}</div>` : ''}${freebetMark}</div><button class="history-icon-btn delete-btn" data-id="${bet.id}"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button><button class="history-icon-btn comment-btn" data-id="${bet.id}"><svg viewBox="0 0 24 24"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></button>`;                    list.appendChild(el);
                 });
             }
             document.getElementById('hist-next-btn').style.display = (historyPage * ITEMS_PER_PAGE < sorted.length) ? 'flex' : 'none';
@@ -390,7 +352,9 @@
         document.getElementById('enterBtn').addEventListener('click', () => window.switchScreen(window.els.welcome, window.els.main));
         document.getElementById('toBetsBtn').addEventListener('click', () => window.switchScreen(window.els.main, window.els.bets));
         document.getElementById('toDepositsBtn').addEventListener('click', () => window.switchScreen(window.els.main, window.els.depMain));
-        document.getElementById('toWithdrawBtn').addEventListener('click', () => window.switchScreen(window.els.main, window.els.withMain));        document.getElementById('backToMenuBtn').addEventListener('click', () => window.switchScreen(window.els.bets, window.els.main));
+        document.getElementById('toWithdrawBtn').addEventListener('click', () => window.switchScreen(window.els.main, window.els.withMain));
+        document.getElementById('toFreebetsBtn').addEventListener('click', () => window.switchScreen(window.els.main, window.els.freebetMain));
+        document.getElementById('backToMenuBtn').addEventListener('click', () => window.switchScreen(window.els.bets, window.els.main));
         document.getElementById('toPlaceBetBtn').addEventListener('click', () => window.switchScreen(window.els.bets, window.els.place));
         document.getElementById('backToBetsBtn').addEventListener('click', () => window.switchScreen(window.els.place, window.els.bets));
         document.getElementById('backBetTypeBtn').addEventListener('click', () => window.switchScreen(window.els.type, window.els.payment));
@@ -419,19 +383,18 @@
         document.getElementById('backToAmountBtn').addEventListener('click', () => window.switchScreen(window.els.coef, window.els.amount));
         document.getElementById('nextBetBtn').addEventListener('click', () => window.switchScreen(window.els.success, window.els.place));
         document.getElementById('toMainMenuFromSuccessBtn').addEventListener('click', () => window.switchScreen(window.els.success, window.els.main));
-        document.getElementById('calcBtn').addEventListener('click', () => { window.renderBetsList(); window.switchScreen(window.els.main, window.els.uncalc); });
+        
+        // ✅ ЗАГЛУШКА ДЛЯ "МОЯ СТАТИСТИКА"
+        document.getElementById('calcBtn').addEventListener('click', () => window.showAlert('Раздел "Моя статистика" в разработке'));
+        
         document.getElementById('calcToPlaceBetBtn').addEventListener('click', () => window.switchScreen(window.els.uncalc, window.els.place));
         document.getElementById('calcToMainBtn').addEventListener('click', () => window.switchScreen(window.els.uncalc, window.els.main));
         document.getElementById('backToUncalcBtn').addEventListener('click', () => window.switchScreen(window.els.calc, window.els.uncalc));
-
         ['win','loss','push'].forEach(type => {
             document.getElementById(`${type}ToStatsBtn`).addEventListener('click', () => window.showAlert('Моя статистика'));
             document.getElementById(`${type}BackBtn`).addEventListener('click', () => { window.renderBetsList(); window.switchScreen(window.els[type], window.els.uncalc); });
             document.getElementById(`${type}ToMainBtn`).addEventListener('click', () => window.switchScreen(window.els[type], window.els.main));
         });
-
-        document.getElementById('popup-go-to-freebets').addEventListener('click', () => { window.els.popup.classList.remove('active'); window.showAlert('Раздел "Мои фрибеты" в разработке'); });
-        window.els.popup.addEventListener('click', (e) => { if (e.target === window.els.popup) window.els.popup.classList.remove('active'); });
 
         document.getElementById('hist-next-btn').addEventListener('click', () => { historyPage++; window.renderHistoryPage(); });
         document.getElementById('hist-prev-btn').addEventListener('click', () => { if(historyPage > 1) { historyPage--; window.renderHistoryPage(); } });
@@ -439,7 +402,8 @@
 
         document.getElementById('history-list').addEventListener('click', (e) => {
             const delBtn = e.target.closest('.delete-btn'); const comBtn = e.target.closest('.comment-btn');
-            if(delBtn) { currentDeleteId = delBtn.dataset.id; window.els.deletePopup.classList.add('active'); }            if(comBtn) { currentCommentId = comBtn.dataset.id; const bet = allBets.find(b => b.id == currentCommentId); document.getElementById('comment-input').value = bet ? bet.comment : ''; window.els.commentPopup.classList.add('active'); }
+            if(delBtn) { currentDeleteId = delBtn.dataset.id; window.els.deletePopup.classList.add('active'); }
+            if(comBtn) { currentCommentId = comBtn.dataset.id; const bet = allBets.find(b => b.id == currentCommentId); document.getElementById('comment-input').value = bet ? bet.comment : ''; window.els.commentPopup.classList.add('active'); }
         });
 
         document.getElementById('delete-yes').addEventListener('click', () => {
@@ -464,7 +428,7 @@
         document.getElementById('dep-to-history').addEventListener('click', () => { window.renderDepHistory(); window.switchScreen(window.els.depMain, window.els.depHistory); });
         document.getElementById('dep-main-to-main').addEventListener('click', () => window.switchScreen(window.els.depMain, window.els.main));
         document.getElementById('dep-bk-to-main').addEventListener('click', () => window.switchScreen(window.els.depBk, window.els.main));
-        document.getElementById('dep-next').addEventListener('click', () => { const val = document.getElementById('dep-amount-input').value; if(val) { userDeposits.push({ bk: currentData.depBk, amount: parseFloat(val), date: new Date().toLocaleDateString('ru-RU') }); document.getElementById('dep-amount-input').value = ''; window.switchScreen(window.els.depAmount, window.els.depSuccess); } else window.showAlert('Введите сумму депозита'); });
+        document.getElementById('dep-next').addEventListener('click', () => { const val = document.getElementById('dep-amount-input').value; if(val) { userDeposits.push({ id: Date.now(), bk: currentData.depBk, amount: parseFloat(val), date: new Date().toLocaleDateString('ru-RU') }); document.getElementById('dep-amount-input').value = ''; window.switchScreen(window.els.depAmount, window.els.depSuccess); } else window.showAlert('Введите сумму депозита'); });
         document.getElementById('dep-back').addEventListener('click', () => window.switchScreen(window.els.depAmount, window.els.depBk));
         document.getElementById('dep-amount-to-main').addEventListener('click', () => window.switchScreen(window.els.depAmount, window.els.main));
         document.getElementById('dep-success-to-main').addEventListener('click', () => window.switchScreen(window.els.depSuccess, window.els.main));
@@ -472,14 +436,13 @@
         document.getElementById('dep-history-to-main').addEventListener('click', () => window.switchScreen(window.els.depHistory, window.els.main));
         document.getElementById('dep-clear-history').addEventListener('click', () => window.els.depClearPopup.classList.add('active'));
         document.getElementById('dep-clear-yes').addEventListener('click', () => { userDeposits = []; window.els.depClearPopup.classList.remove('active'); window.renderDepHistory(); window.showAlert('История депозитов очищена'); });
-        document.getElementById('dep-clear-no').addEventListener('click', () => window.els.depClearPopup.classList.remove('active'));
+        document.getElementById('dep-clear-no').addEventListener('click', () => { window.els.depClearPopup.classList.remove('active'); });
 
         // Выводы навигация
-        document.getElementById('with-to-bk').addEventListener('click', () => window.switchScreen(window.els.withMain, window.els.withBk));
-        document.getElementById('with-to-history').addEventListener('click', () => { window.renderWithHistory(); window.switchScreen(window.els.withMain, window.els.withHistory); });
+        document.getElementById('with-to-bk').addEventListener('click', () => window.switchScreen(window.els.withMain, window.els.withBk));        document.getElementById('with-to-history').addEventListener('click', () => { window.renderWithHistory(); window.switchScreen(window.els.withMain, window.els.withHistory); });
         document.getElementById('with-main-to-main').addEventListener('click', () => window.switchScreen(window.els.withMain, window.els.main));
         document.getElementById('with-bk-to-main').addEventListener('click', () => window.switchScreen(window.els.withBk, window.els.main));
-        document.getElementById('with-next').addEventListener('click', () => { const val = document.getElementById('with-amount-input').value; if(val) { userWithdrawals.push({ bk: currentData.withBk, amount: parseFloat(val), date: new Date().toLocaleDateString('ru-RU') }); document.getElementById('with-amount-input').value = ''; window.switchScreen(window.els.withAmount, window.els.withSuccess); } else window.showAlert('Введите сумму вывода'); });
+        document.getElementById('with-next').addEventListener('click', () => { const val = document.getElementById('with-amount-input').value; if(val) { userWithdrawals.push({ id: Date.now(), bk: currentData.withBk, amount: parseFloat(val), date: new Date().toLocaleDateString('ru-RU') }); document.getElementById('with-amount-input').value = ''; window.switchScreen(window.els.withAmount, window.els.withSuccess); } else window.showAlert('Введите сумму вывода'); });
         document.getElementById('with-back').addEventListener('click', () => window.switchScreen(window.els.withAmount, window.els.withBk));
         document.getElementById('with-amount-to-main').addEventListener('click', () => window.switchScreen(window.els.withAmount, window.els.main));
         document.getElementById('with-success-to-main').addEventListener('click', () => window.switchScreen(window.els.withSuccess, window.els.main));
@@ -488,7 +451,28 @@
         document.getElementById('with-clear-history').addEventListener('click', () => window.els.withClearPopup.classList.add('active'));
         document.getElementById('with-clear-yes').addEventListener('click', () => { userWithdrawals = []; window.els.withClearPopup.classList.remove('active'); window.renderWithHistory(); window.showAlert('История выводов очищена'); });
         document.getElementById('with-clear-no').addEventListener('click', () => window.els.withClearPopup.classList.remove('active'));
-        [window.els.deletePopup, window.els.commentPopup, window.els.clearPopup, window.els.depClearPopup, window.els.withClearPopup].forEach(pop => pop.addEventListener('click', (e) => { 
+
+        // Фрибеты навигация
+        document.getElementById('freebet-to-bk').addEventListener('click', () => window.switchScreen(window.els.freebetMain, window.els.freebetBk));
+        document.getElementById('freebet-to-history').addEventListener('click', () => { window.renderFreebetHistory(); window.switchScreen(window.els.freebetMain, window.els.freebetHistory); });
+        document.getElementById('freebet-main-to-main').addEventListener('click', () => window.switchScreen(window.els.freebetMain, window.els.main));
+        document.getElementById('freebet-bk-to-main').addEventListener('click', () => window.switchScreen(window.els.freebetBk, window.els.main));
+        document.getElementById('freebet-next').addEventListener('click', () => { const val = document.getElementById('freebet-amount-input').value; if(val) { userFreebets.push({ id: Date.now(), bk: currentData.freebetBk, amount: parseFloat(val), date: new Date().toLocaleDateString('ru-RU') }); document.getElementById('freebet-amount-input').value = ''; window.switchScreen(window.els.freebetAmount, window.els.freebetSuccess); } else window.showAlert('Введите сумму фрибета'); });
+        document.getElementById('freebet-back').addEventListener('click', () => window.switchScreen(window.els.freebetAmount, window.els.freebetBk));
+        document.getElementById('freebet-amount-to-main').addEventListener('click', () => window.switchScreen(window.els.freebetAmount, window.els.main));
+        document.getElementById('freebet-success-to-main').addEventListener('click', () => window.switchScreen(window.els.freebetSuccess, window.els.main));
+        document.getElementById('freebet-history-to-main').addEventListener('click', () => window.switchScreen(window.els.freebetHistory, window.els.main));
+        document.getElementById('freebet-clear-history').addEventListener('click', () => window.els.freebetClearPopup.classList.add('active'));
+        document.getElementById('freebet-clear-yes').addEventListener('click', () => { userFreebets = []; window.els.freebetClearPopup.classList.remove('active'); window.renderFreebetHistory(); window.showAlert('История фрибетов очищена'); });
+        document.getElementById('freebet-clear-no').addEventListener('click', () => { window.els.freebetClearPopup.classList.remove('active'); });
+        
+        // Кнопка в попапе "Фрибет не найден"
+        document.getElementById('popup-go-to-freebet-from-not-found').addEventListener('click', () => {
+            window.els.freebetNotFoundPopup.classList.remove('active');
+            window.switchScreen(window.els.payment, window.els.freebetMain);
+        });
+
+        [window.els.deletePopup, window.els.commentPopup, window.els.clearPopup, window.els.depClearPopup, window.els.withClearPopup, window.els.freebetClearPopup, window.els.freebetNotFoundPopup].forEach(pop => pop && pop.addEventListener('click', (e) => { 
             if(e.target === pop) { pop.classList.remove('active'); if(pop === window.els.commentPopup) { const bet = allBets.find(b => b.id == currentCommentId); if(bet) bet.comment = document.getElementById('comment-input').value.trim(); currentCommentId=null; window.renderHistoryPage(); } } 
         }));
     </script>
