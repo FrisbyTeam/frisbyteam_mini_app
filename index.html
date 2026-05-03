@@ -171,13 +171,10 @@
 
     <!-- ЭКРАН ИСТОРИИ СТАВОК -->
     <div id="history-screen">
-        <div class="history-header"><div class="screen-header">История ставок</div></div>
-        <div id="history-list" class="history-scroll" style="width:100%; opacity:0; animation:fadeInUp 0.8s 0.2s forwards;"></div>
-        <div class="vert-btns-container" style="padding: 15px;">
-            <button class="menu-btn full-width" id="hist-main-btn" type="button" style="justify-content: center;">
-                <svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>
-                В главное меню
-            </button>
+    <div class="history-header"><div class="screen-header">История ставок</div></div>
+    <div id="history-list" class="history-scroll" style="width:100%; opacity:0; animation:fadeInUp 0.8s 0.2s forwards;"></div>
+    <div class="vert-btns-container" style="padding: 15px;">
+    <button class="menu-btn full-width" id="hist-main-btn" type="button" style="justify-content:center;"><svg class="icon-svg" style="width:20px;height:20px;margin-right:8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
         </div>
     </div>
     
@@ -698,8 +695,8 @@
         document.getElementById('calcToPlaceBetBtn').addEventListener('click', () => window.switchScreen(window.els.uncalc, window.els.place));
         document.getElementById('calcToMainBtn').addEventListener('click', () => window.switchScreen(window.els.uncalc, window.els.main));
         document.getElementById('backToUncalcBtn').addEventListener('click', () => window.switchScreen(window.els.calc, window.els.uncalc));
-        document.getElementById('hist-next-btn').addEventListener('click', () => { historyPage++; window.renderHistoryPage(); });
-        document.getElementById('hist-prev-btn').addEventListener('click', () => { if(historyPage > 1) { historyPage--; window.renderHistoryPage(); } });
+        const hNext = document.getElementById('hist-next-btn'); if(hNext) hNext.addEventListener('click', () => { historyPage++; window.renderHistoryPage(); });
+        const hPrev = document.getElementById('hist-prev-btn'); if(hPrev) hPrev.addEventListener('click', () => { if(historyPage > 1) { historyPage--; window.renderHistoryPage(); } });
         document.getElementById('hist-main-btn').addEventListener('click', () => { historyPage = 1; window.switchScreen(window.els.history, window.els.main); });
 
         document.getElementById('history-list').addEventListener('click', (e) => {
