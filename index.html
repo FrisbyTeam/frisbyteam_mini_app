@@ -547,8 +547,8 @@
                 if(b.status === 'win') sportStats[b.sport].won++;
                 if(b.status === 'loss') sportStats[b.sport].lost++;
                 if(b.status === 'push') sportStats[b.sport].push++;
-                if(b.method !== 'Freebet') sportStats[b.sport].staked += parseFloat(b.amount);
-                if(b.status === 'win') sportStats[b.sport].returned += parseFloat(b.amount) * parseFloat(b.coef);
+                if(b.method !== 'Freebet') sportStats[b.sport].staked += (b.method === 'Freebet' ? 0 : parseFloat(b.amount
+                if(b.status==='win') { let p = parseFloat(b.amount)*parseFloat(b.coef); if(b.method==='Freebet') p -= parseFloat(b.amount); sportStats[b.sport].returned += p; }
                 sportStats[b.sport].coefSum += parseFloat(b.coef);
             });
             let bestSport = null, bestSportRoi = -Infinity;
@@ -584,8 +584,8 @@
                 if(b.status === 'win') typeStats[t].won++;
                 if(b.status === 'loss') typeStats[t].lost++;
                 if(b.status === 'push') typeStats[t].push++;
-                if(b.method !== 'Freebet') typeStats[t].staked += parseFloat(b.amount);
-                if(b.status === 'win') typeStats[t].returned += parseFloat(b.amount) * parseFloat(b.coef);
+                if(b.method !== 'Freebet') typeStats[t].staked += (b.method === 'Freebet' ? 0 : parseFloat(b.amount));
+                if(b.status==='win') { let p = parseFloat(b.amount)*parseFloat(b.coef); if(b.method==='Freebet') p -= parseFloat(b.amount); typeStats[t].returned += p; }
                 typeStats[t].coefSum += parseFloat(b.coef);
             });
             let bestType = null, bestTypeRoi = -Infinity;
