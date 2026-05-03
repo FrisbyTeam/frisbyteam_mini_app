@@ -607,7 +607,7 @@
                 </div>`;
             } else { tyCont.innerHTML = '<div class="stat-card" style="text-align:center; color:#e5c100;">Данных пока нет</div>'; }
 
-            // Правка 8: Самая щедрая на фрибеты контора
+            // Самая щедрая на фрибеты контора
             let fbBkStats = {};
             userFreebets.forEach(fb => {
                 if(!fbBkStats[fb.bk]) fbBkStats[fb.bk] = {count:0, sum:0};
@@ -616,15 +616,20 @@
             });
             const fbCont = document.getElementById('stat-best-fb-container');
             fbCont.innerHTML = '';
-            let bestFbBk = null, maxFbCount = -1;
+            
+            let bestFbBk = null;
             for(let bk in fbBkStats) {
-                if(fbBkStats[bk].count > maxFbCount) { maxFbCount = fbBkStats[bk].count; bestFbBk = bk; }
+                if(!bestFbBk || fbBkStats[bk].count > fbBkStats[bestFbBk].count || (fbBkStats[bk].count === fbBkStats[bestFbBk].count && fbBkStats[bk].sum > fbBkStats[bestFbBk].sum)) {
+                    bestFbBk = bk;
+                }
             }
+            
             if(bestFbBk) {
                 const d = fbBkStats[bestFbBk];
-                // Цвет шрифта белый, как просили
-                fbCont.innerHTML = `<div class="best-item" style="color:#ffffff;"><div class="best-title" style="color:#ffffff;">${bestFbBk}</div><div class="best-stat"><span>Количество фрибетов:</span><span>${d.count}</span></div><div class="best-stat"><span>Общая сумма:</span><span>${d.sum.toFixed(0)} ₽</span></div></div>`;
-            } else { fbCont.innerHTML = '<div class="stat-card" style="text-align:center; color:#e5c100;">Данных пока нет</div>'; }
+                fbCont.innerHTML = `<div class="best-item" style="color:#ffffff;"><div class="best-title" style="color:#ffffff;">${bestFbBk}</div><div class="best-stat"><span>Количество фрибетов:</span><span>${d.count}</span></div><div class="best-stat"><span>Сумма фрибетов:</span><span>${d.sum.toFixed(0)} ₽</span></div></div>`;
+            } else {
+                fbCont.innerHTML = '<div class="stat-card" style="text-align:center; color:#e5c100;">Данных пока нет</div>';
+            }
         }
 
         // Навешивание событий
