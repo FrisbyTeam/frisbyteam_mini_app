@@ -470,7 +470,7 @@
             let pushes = allBets.filter(b => b.status === 'push');
             let winRate = totalBets > 0 ? ((wins.length / totalBets) * 100).toFixed(1) : 0;
 
-            let totalStaked = allBets.filter(b => b.method !== 'Freebet').reduce((a,b) => a + parseFloat(b.amount), 0);
+            let totalStaked = allBets.reduce((a,b) => a + parseFloat(b.amount), 0);
             let totalReturn = allBets.filter(b => b.status === 'win').reduce((a,b) => a + (parseFloat(b.amount) * parseFloat(b.coef)), 0);
             let roiVal = totalStaked > 0 ? ((totalReturn - totalStaked) / totalStaked) * 100 : 0;
             let roi = roiVal.toFixed(2);
