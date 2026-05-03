@@ -470,8 +470,8 @@
             let pushes = allBets.filter(b => b.status === 'push');
             let winRate = totalBets > 0 ? ((wins.length / totalBets) * 100).toFixed(1) : 0;
 
-            let totalStaked = allBets.reduce((a,b) => a + parseFloat(b.amount), 0);
-            let totalReturn = allBets.filter(b => b.status === 'win').reduce((a,b) => a + (parseFloat(b.amount) * parseFloat(b.coef)), 0);
+            let totalStaked = allBets.filter(b => b.method !== 'Freebet').reduce((a,b) => a + parseFloat(b.amount), 0);
+            let totalReturn = allBets.filter(b => b.status === 'win').reduce((a,b) => { if(b.method === 'Freebet') { return a + (parseFloat(b.amount) * parseFloat(b.coef) - parseFloat(b.amount)); } else { return a + (parseFloat(b.amount) * parseFloat(b.coef)); } }, 0);
             let roiVal = totalStaked > 0 ? ((totalReturn - totalStaked) / totalStaked) * 100 : 0;
             let roi = roiVal.toFixed(2);
             let roiColor = roiVal >= 0 ? '#4CAF50' : '#D32F2F';
