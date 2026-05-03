@@ -334,7 +334,7 @@
         };
 
         window.useFreebet = function(fb) {
-            userFreebets = userFreebets.filter(f => f.id !== fb.id);
+        
             currentData.method = 'Freebet';
             currentData.amount = fb.amount;
             window.switchScreen(window.els.payment, window.els.type);
