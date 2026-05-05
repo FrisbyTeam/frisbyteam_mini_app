@@ -24,7 +24,7 @@
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; opacity: 0; animation: fadeInUp 0.8s 0.3s forwards; }
         .menu-btn { background: linear-gradient(135deg, #FFD700, #D4AF37); color: #000000; border: none; padding: 18px 8px; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; cursor: pointer; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 75px; transition: transform 0.1s; }
         .menu-btn:active { transform: scale(0.97); }
-        .menu-btn.full-width { grid-column: span 2; margin-top: 5px; min-height: 55px; flex-direction: row; gap: 10px; font-size: 14px; letter-spacing: 1px; width: 100%; justify-content: center; }
+        .menu-btn.full-width { grid-column: span 2; margin-top: 5px; min-height: 55px; flex-direction: row; gap: 10px; font-size: 14px; letter-spacing: 1px; }
         .menu-btn.bk-btn { font-size: 14px; letter-spacing: 0.5px; }
         .btn-wrapper { animation-delay: 1.2s; width: 100%; display: flex; justify-content: center; }
         .action-btn { background: linear-gradient(135deg, #FFD700, #D4AF37); color: #000000; padding: 20px 0; min-height: 56px; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 700; width: 100%; max-width: 280px; cursor: pointer; box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4); text-transform: uppercase; display: flex; align-items: center; justify-content: center; transition: transform 0.1s; }
@@ -57,16 +57,15 @@
 
         .result-info-text { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: #ffffff; margin: 15px 0; opacity: 0.9; animation: fadeInUp 0.6s forwards; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
 
-        /* История - фиксированная навигация (Правка 5) */
+        /* История */
         #history-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: linear-gradient(135deg, var(--black) 0%, #111 60%, #2a2005 85%, var(--gold) 100%); display: none; flex-direction: column; z-index: 150; }
         #history-screen.active { display: flex; }
         .history-header { padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0; }
         .history-scroll { flex: 1; overflow-y: auto; padding: 15px; }
-        .history-nav { display: flex; justify-content: space-between; padding: 15px; background: rgba(0,0,0,0.8); border-top: 1px solid #FFD700; flex-shrink: 0; }
         .history-nav-btns { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 360px; margin-top: 20px; opacity: 0; animation: fadeInUp 0.8s 0.3s forwards; }
         
         .history-item, .dep-history-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; width: 100%; }
-        .history-card, .dep-card, .with-card, .freebet-card { flex: 1; padding: 8px; border-radius: 12px; background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; color: #FFD700; font-size: 11px; font-weight: 500; text-align: left; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+        .history-card, .dep-card, .with-card, .freebet-card { flex: 1; padding: 12px; border-radius: 12px; background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; color: #FFD700; font-size: 13px; font-weight: 500; text-align: left; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
         .history-card .row1, .history-card .row2 { display: flex; flex-wrap: wrap; gap: 5px 10px; margin-bottom: 4px; }
         .history-card .row2 { margin-bottom: 0; }
         .history-card .badge { font-weight: 700; }
@@ -96,8 +95,8 @@
 
         /* СТАТИСТИКА */
         .stats-screen-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; max-width: none; background: linear-gradient(135deg, var(--black) 0%, #111 60%, #2a2005 85%, var(--gold) 100%); display: none; flex-direction: column; z-index: 150; }
-        .stats-header { padding: 20px; text-align: center; flex-shrink: 0; }        .stats-scroll { flex: 1; overflow-y: auto; padding: 0 15px 180px 15px; }
-        .stats-nav { position: fixed; bottom: 0; left: 0; right: 0; padding: 15px 20px 30px; background: linear-gradient(0deg, #050505 85%, transparent 100%); z-index: 160; display: flex; flex-direction: column; gap: 10px; }
+        .stats-header { padding: 20px; text-align: center; flex-shrink: 0; }
+        .stats-scroll { flex: 1; overflow-y: auto; padding: 0 15px 140px 15px; }        .stats-nav { position: fixed; bottom: 0; left: 0; right: 0; padding: 15px 20px 30px; background: linear-gradient(0deg, #050505 85%, transparent 100%); z-index: 160; display: flex; flex-direction: column; gap: 10px; }
         .stat-card { background: rgba(255,215,0,0.05); border: 1px solid rgba(255,215,0,0.3); border-radius: 12px; padding: 15px; margin-bottom: 12px; }
         .stat-label { color: #e5c100; font-size: 13px; margin-bottom: 4px; text-align: left; }
         .stat-value { color: #FFD700; font-size: 18px; font-weight: 700; text-align: right; }
@@ -145,13 +144,12 @@
     <div id="sports-screen" class="screen-container"><div class="screen-header">Внести ставку</div><div class="screen-subheader">На какой вид спорта<br>вы сделали ставку?</div><div class="menu-grid">
         <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Футбол')">Футбол</button>
         <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Хоккей')">Хоккей</button>
-        <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Баскетбол')">Баскетбол</button>        <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Волейбол')">Волейбол</button>
-        <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Киберспорт')">Киберспорт</button>
+        <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Баскетбол')">Баскетбол</button>
+        <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Волейбол')">Волейбол</button>        <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Киберспорт')">Киберспорт</button>
         <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Теннис')">Теннис</button>
         <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Бильярд/Снукер')">Бильярд/Снукер</button>
         <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Единоборства/Бокс')">Единоборства/Бокс</button>
-        <button class="menu-btn bk-btn" id="sport-other-btn" type="button" onclick="window.showAmountScreen('Другое')">Другое</button>
-        <button class="menu-btn bk-btn" id="multi-sport-btn" type="button" style="display: none;" onclick="window.showAmountScreen('Несколько видов')">Несколько видов</button>
+        <button class="menu-btn bk-btn" type="button" onclick="window.showAmountScreen('Другое')">Другое</button>        <button class="menu-btn full-width" id="multi-sport-btn" type="button" style="display: none;">Несколько видов спорта</button>
         <button class="menu-btn full-width" id="backToKindBtn" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-bottom: 0;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button>
     </div></div>
     
@@ -169,15 +167,9 @@
     <div id="result-loss-screen" class="screen-container"><div class="screen-header anim-element" style="animation-delay: 0s;">Экая оказия!</div><div class="screen-subheader anim-element" style="animation-delay: 0.1s;">Не вешайте нос! Все победы впереди!<br>Ваша ставка под номером <strong id="loss-bet-id" style="font-weight: 800; font-size: 22px;">...</strong> учтена в статистике!</div><div id="loss-profit-text" class="result-info-text"></div><div class="result-nav-container"><button class="result-nav-btn loss" id="lossToStatsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>В мою статистику</button><button class="result-nav-btn loss" id="lossBackBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button><button class="result-nav-btn loss" id="lossToMainBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
     <div id="result-push-screen" class="screen-container"><div class="screen-header anim-element" style="animation-delay: 0s;">Неплохо!</div><div class="screen-subheader anim-element" style="animation-delay: 0.1s;">Как будто и не ставил!<br>Ваша ставка под номером <strong id="push-bet-id" style="font-weight: 800; font-size: 22px;">...</strong> учтена в статистике!</div><div class="result-nav-container"><button class="result-nav-btn push" id="pushToStatsBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 5 19 12 12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>В мою статистику</button><button class="result-nav-btn push" id="pushBackBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Вернуться назад</button><button class="result-nav-btn push" id="pushToMainBtn" type="button"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
 
-    <!-- ЭКРАН ИСТОРИИ СТАВОК -->
-    <div id="history-screen">
-    <div class="history-header"><div class="screen-header">История ставок</div></div>
-    <div id="history-list" class="history-scroll" style="width:100%; opacity:0; animation:fadeInUp 0.8s 0.2s forwards;"></div>
-    <div class="vert-btns-container" style="padding: 15px;">
-    <button class="menu-btn full-width" id="hist-main-btn" type="button" style="justify-content:center;"><svg class="icon-svg" style="width:20px;height:20px;margin-right:8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
-        </div>
-    </div>
-    
+    <!-- ЭКРАН ИСТОРИИ СТАВОК (Правка 5) -->
+    <div id="history-screen"><div class="history-header"><div class="screen-header">История ставок</div></div><div id="history-list" class="history-scroll" style="width:100%; opacity:0; animation:fadeInUp 0.8s 0.2s forwards;"></div><div class="vert-btns-container" style="padding: 15px;"><button class="menu-btn full-width" id="hist-main-btn" type="button" style="justify-content:center;"><svg class="icon-svg" style="width:20px;height:20px;margin-right:8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
+
     <!-- ЭКРАНЫ ДЕПОЗИТОВ -->
     <div id="deposit-main-screen" class="screen-container"><div class="screen-header">Мои депозиты</div><div class="vert-btns-container"><button class="menu-btn full-width" id="dep-to-bk" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="8" x2="12" y2="16" stroke="currentColor" stroke-width="3"/><line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" stroke-width="3"/></svg>Внести депозит</button><button class="menu-btn full-width" id="dep-to-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/></svg>История депозитов</button><button class="menu-btn full-width" id="dep-main-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
     <div id="deposit-bk-screen" class="screen-container"><div class="screen-header">Мои депозиты</div><div class="screen-subheader">В какой конторе вы сделали депозит?</div><div class="menu-grid"><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Фонбет')">Фонбет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Pari')">Pari</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BetBoom')">BetBoom</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Marathon.bet')">Marathon.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('OlimpBet')">OlimpBet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BetCity')">BetCity</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Winline')">Winline</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Лига ставок')">Лига ставок</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Zenit')">Zenit</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('MelBet')">MelBet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Leon.ru')">Leon.ru</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Tennisi.bet')">Tennisi.bet</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('Bettery')">Bettery</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('BET-M')">BET-M</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('БалтБет')">БалтБет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('СпортБет')">СпортБет</button><button class="menu-btn bk-btn" type="button" onclick="window.selectDepBk('24bet.ru')">24bet.ru</button></div><div class="vert-btns-container"><button class="menu-btn full-width" id="dep-bk-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
@@ -200,18 +192,17 @@
     <div id="freebet-history-screen" class="screen-container"><div class="screen-header">Мои фрибеты</div><div class="screen-subheader">История моих фрибетов</div><div id="freebet-history-list" style="width: 100%; max-height: 50vh; overflow-y: auto; opacity: 0; animation: fadeInUp 0.8s 0.2s forwards; margin-bottom: 15px;"></div><div class="vert-btns-container"><button class="menu-btn full-width" id="freebet-clear-history" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Очистить историю</button><button class="menu-btn full-width" id="freebet-history-to-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button></div></div>
 
     <!-- МОЯ СТАТИСТИКА -->
-    <div id="stats-main-screen" class="stats-screen-container">        <div class="stats-header"><div class="screen-header">Моя статистика</div></div>
-        <div class="stats-scroll" style="overflow-y: visible; display: flex; flex-direction: column; gap: 12px; padding: 20px; align-items: center;">
-            <button class="menu-btn full-width" id="stats-to-general" type="button">Общая статистика</button>
+    <div id="stats-main-screen" class="stats-screen-container">
+        <div class="stats-header"><div class="screen-header">Моя статистика</div></div>
+        <div class="stats-scroll" style="overflow-y: visible; display: flex; flex-direction: column; gap: 12px; padding: 20px; align-items: center;">            <button class="menu-btn full-width" id="stats-to-general" type="button">Общая статистика</button>
             <button class="menu-btn full-width" type="button" disabled style="opacity:0.4; cursor:not-allowed;">По букмекерским конторам</button>
             <button class="menu-btn full-width" type="button" disabled style="opacity:0.4; cursor:not-allowed;">По результатам</button>
-            <button class="menu-btn full-width" type="button" disabled style="opacity:0.4; cursor:not-allowed;">По финансам</button>
-            <button class="menu-btn full-width" type="button" disabled style="opacity:0.4; cursor:not-allowed;">По видам спорта</button>
+            <button class="menu-btn full-width" type="button" disabled style="opacity:0.4; cursor:not-allowed;">По финансам</button>            <button class="menu-btn full-width" type="button" disabled style="opacity:0.4; cursor:not-allowed;">По видам спорта</button>
             <button class="menu-btn full-width" type="button" disabled style="opacity:0.4; cursor:not-allowed;">По виду ставок</button>
             <button class="menu-btn full-width" type="button" disabled style="opacity:0.4; cursor:not-allowed;">По датам</button>
         </div>
         <div class="stats-nav">
-            <button class="menu-btn full-width" id="stats-main-back" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
+            <button class="menu-btn full-width" id="stats-main-back" type="button">В главное меню</button>
         </div>
     </div>
 
@@ -249,13 +240,12 @@
             <div class="stat-subtitle">Самый большой выигрыш</div>
             <div class="stat-card" style="background:transparent; border:none; padding:0 5px;">
                 <div class="record-item"><span class="record-type">Одинар</span><span class="record-val" id="rec-win-1" style="color:#4CAF50">0 ₽</span></div>
-                <div class="record-item"><span class="record-type">Двойник</span><span class="record-val" id="rec-win-2" style="color:#4CAF50">0 ₽</span></div>                <div class="record-item"><span class="record-type">Тройник</span><span class="record-val" id="rec-win-3" style="color:#4CAF50">0 ₽</span></div>
+                <div class="record-item"><span class="record-type">Двойник</span><span class="record-val" id="rec-win-2" style="color:#4CAF50">0 ₽</span></div>
+                <div class="record-item"><span class="record-type">Тройник</span><span class="record-val" id="rec-win-3" style="color:#4CAF50">0 ₽</span></div>
                 <div class="record-item"><span class="record-type">Экспресс</span><span class="record-val" id="rec-win-4" style="color:#4CAF50">0 ₽</span></div>
             </div>
-
             <div class="stat-subtitle">Самый большой проигрыш</div>
-            <div class="stat-card" style="background:transparent; border:none; padding:0 5px;">
-                <div class="record-item"><span class="record-type">Одинар</span><span class="record-val" id="rec-loss-1" style="color:#D32F2F">0 ₽</span></div>
+            <div class="stat-card" style="background:transparent; border:none; padding:0 5px;">                <div class="record-item"><span class="record-type">Одинар</span><span class="record-val" id="rec-loss-1" style="color:#D32F2F">0 ₽</span></div>
                 <div class="record-item"><span class="record-type">Двойник</span><span class="record-val" id="rec-loss-2" style="color:#D32F2F">0 ₽</span></div>
                 <div class="record-item"><span class="record-type">Тройник</span><span class="record-val" id="rec-loss-3" style="color:#D32F2F">0 ₽</span></div>
                 <div class="record-item"><span class="record-type">Экспресс</span><span class="record-val" id="rec-loss-4" style="color:#D32F2F">0 ₽</span></div>
@@ -270,13 +260,12 @@
             <div class="stat-subtitle">Самый прибыльный тип ставок</div>
             <div id="stat-best-type-container"></div>
 
-            <!-- Правка 8: Самая щедрая на фрибеты контора -->
             <div class="stat-subtitle">Самая щедрая на фрибеты контора</div>
             <div id="stat-best-fb-container"></div>
         </div>
         <div class="stats-nav">
-            <button class="menu-btn full-width" id="stats-general-back" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><polyline points="12 19 5 12 12 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Назад</button>
-            <button class="menu-btn full-width" id="stats-general-main" type="button"><svg class="icon-svg" style="width: 20px; height: 20px; margin-right: 8px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2"/></svg>В главное меню</button>
+            <button class="menu-btn full-width" id="stats-general-back" type="button">Назад</button>
+            <button class="menu-btn full-width" id="stats-general-main" type="button">В главное меню</button>
         </div>
     </div>
 
@@ -298,17 +287,16 @@
     <script>
         window.els = {
             welcome: document.getElementById('welcome-screen'), main: document.getElementById('main-menu'), bets: document.getElementById('bets-screen'), place: document.getElementById('place-bet-screen'), payment: document.getElementById('payment-screen'), type: document.getElementById('bet-type-screen'), kind: document.getElementById('bet-kind-screen'), sport: document.getElementById('sports-screen'), amount: document.getElementById('amount-screen'), coef: document.getElementById('coef-screen'), success: document.getElementById('success-screen'), uncalc: document.getElementById('uncalculated-bets-screen'), calc: document.getElementById('calc-decision-screen'), win: document.getElementById('result-win-screen'), loss: document.getElementById('result-loss-screen'), push: document.getElementById('result-push-screen'), history: document.getElementById('history-screen'), deletePopup: document.getElementById('delete-popup'), commentPopup: document.getElementById('comment-popup'), clearPopup: document.getElementById('clear-popup'),
-            depMain: document.getElementById('deposit-main-screen'), depBk: document.getElementById('deposit-bk-screen'), depAmount: document.getElementById('deposit-amount-screen'), depSuccess: document.getElementById('deposit-success-screen'), depHistory: document.getElementById('deposit-history-screen'), depClearPopup: document.getElementById('dep-clear-popup'),            withMain: document.getElementById('withdraw-main-screen'), withBk: document.getElementById('withdraw-bk-screen'), withAmount: document.getElementById('withdraw-amount-screen'), withSuccess: document.getElementById('withdraw-success-screen'), withHistory: document.getElementById('withdraw-history-screen'), withClearPopup: document.getElementById('with-clear-popup'),
+            depMain: document.getElementById('deposit-main-screen'), depBk: document.getElementById('deposit-bk-screen'), depAmount: document.getElementById('deposit-amount-screen'), depSuccess: document.getElementById('deposit-success-screen'), depHistory: document.getElementById('deposit-history-screen'), depClearPopup: document.getElementById('dep-clear-popup'),
+            withMain: document.getElementById('withdraw-main-screen'), withBk: document.getElementById('withdraw-bk-screen'), withAmount: document.getElementById('withdraw-amount-screen'), withSuccess: document.getElementById('withdraw-success-screen'), withHistory: document.getElementById('withdraw-history-screen'), withClearPopup: document.getElementById('with-clear-popup'),
             freebetMain: document.getElementById('freebet-main-screen'), freebetBk: document.getElementById('freebet-bk-screen'), freebetAmount: document.getElementById('freebet-amount-screen'), freebetSuccess: document.getElementById('freebet-success-screen'), freebetHistory: document.getElementById('freebet-history-screen'), freebetClearPopup: document.getElementById('freebet-clear-popup'),
             freebetNotFoundPopup: document.getElementById('freebet-not-found-popup'),
             statsMain: document.getElementById('stats-main-screen'), statsGeneral: document.getElementById('stats-general-screen')
         };
-
         let betCounter = 0, currentData = {}, currentBetToCalc = null, historyPage = 1;
         const ITEMS_PER_PAGE = 10;
         let allBets = [], userDeposits = [], userWithdrawals = [], userFreebets = [];
         let currentDeleteId = null, currentCommentId = null;
-
         if (window.Telegram && Telegram.WebApp) { try { Telegram.WebApp.ready(); Telegram.WebApp.expand(); } catch(e){} }
 
         window.switchScreen = function(from, to) { if(from) from.style.display = 'none'; if(to) to.style.display = 'flex'; if (window.Telegram && Telegram.WebApp) Telegram.WebApp.HapticFeedback?.impactOccurred('medium'); };
@@ -339,30 +327,25 @@
             window.switchScreen(window.els.place, window.els.payment);
         };
 
+        // ✅ ПРАВКА 1: Фрибет исчезает после использования
         window.useFreebet = function(fb) {
-        
+            userFreebets = userFreebets.filter(f => f.id !== fb.id);
             currentData.method = 'Freebet';
             currentData.amount = fb.amount;
             window.switchScreen(window.els.payment, window.els.type);
         };
 
         window.selectAndGo = function(key, value, nextScreen) {
-            currentData[key] = value;            if (nextScreen === window.els.sport) {
+            currentData[key] = value;
+            if (nextScreen === window.els.sport) {
                 const multiBtn = document.getElementById('multi-sport-btn');
-                // Правка 2,3,4: Логика кнопки "Несколько видов" и "Другое"
-                if (['Двойник', 'Тройник', 'Экспресс'].includes(value)) { 
-                    multiBtn.style.display = 'flex'; 
-                } else { 
-                    multiBtn.style.display = 'none'; 
-                }
+                if (['Двойник', 'Тройник', 'Экспресс'].includes(value)) { multiBtn.style.display = 'flex'; } else { multiBtn.style.display = 'none'; }
             }
-            let current = key === 'method' ? window.els.payment : (key === 'type' ? window.els.type : window.els.kind);
-            window.switchScreen(current, nextScreen);
+            let current = key === 'method' ? window.els.payment : (key === 'type' ? window.els.type : window.els.kind);            window.switchScreen(current, nextScreen);
         };
         
         window.showAmountScreen = function(sport) { 
-            currentData.sport = sport; 
-            if (currentData.method === 'Freebet') {
+            currentData.sport = sport;             if (currentData.method === 'Freebet') {
                 window.switchScreen(window.els.sport, window.els.coef);
             } else {
                 window.switchScreen(window.els.sport, window.els.amount); 
@@ -396,7 +379,8 @@
         };
 
         window.renderBetsList = function() {
-            const container = document.getElementById('bets-list-container'); container.innerHTML = '';            const uncalculated = allBets.filter(b => b.status === 'uncalculated');
+            const container = document.getElementById('bets-list-container'); container.innerHTML = '';
+            const uncalculated = allBets.filter(b => b.status === 'uncalculated');
             if (uncalculated.length === 0) { container.innerHTML = `<div style="margin-bottom: 20px; font-size: 16px;">Не найдено не рассчитанных ставок</div>`; }
             else {
                 uncalculated.forEach((bet) => {
@@ -406,12 +390,10 @@
                         ? `<div style="margin-top:6px; display:flex; align-items:center; gap:6px; color:#FFD700;"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg><span style="font-weight:700; font-size:11px; letter-spacing:0.5px;">ФРИБЕТ</span></div>` 
                         : '';
                     btn.innerHTML = `<strong>№${bet.id} | ${bet.bk} | ${bet.kind} | ${bet.type}</strong><span>${bet.sport} | Сумма: ${bet.amount} | Коэф: ${bet.coef}</span>${freebetMark}`;
-                    btn.onclick = () => { currentBetToCalc = bet; window.switchScreen(window.els.uncalc, window.els.calc); };
-                    container.appendChild(btn);
+                    btn.onclick = () => { currentBetToCalc = bet; window.switchScreen(window.els.uncalc, window.els.calc); };                    container.appendChild(btn);
                 });
             }
         };
-
         window.calculateResult = function(resultType) {
             if (!currentBetToCalc) return;
             const bet = allBets.find(b => b.id === currentBetToCalc.id);
@@ -445,7 +427,8 @@
         window.renderHistoryPage = function() {
             const list = document.getElementById('history-list'); list.innerHTML = '';
             const sorted = [...allBets].sort((a,b) => a.id - b.id);
-            const start = (historyPage - 1) * ITEMS_PER_PAGE;            const pageData = sorted.slice(start, start + ITEMS_PER_PAGE);
+            const start = (historyPage - 1) * ITEMS_PER_PAGE;
+            const pageData = sorted.slice(start, start + ITEMS_PER_PAGE);
             if(pageData.length === 0) { list.innerHTML = '<div style="color:#FFD700; padding:20px; text-align:center;">История пуста</div>'; }
             else {
                 pageData.forEach(bet => {
@@ -456,11 +439,9 @@
                         : '';
                     const el = document.createElement('div'); el.className = 'history-item';
                     el.innerHTML = `<div class="history-card ${statusClass}"><div class="row1"><span class="badge">№${bet.id}</span> | <span>${bet.date}</span> | <span>${bet.bk}</span> | <span>${bet.type}</span> | <span>${bet.kind}</span></div><div class="row2"><span>${bet.sport}</span> | <span>Кф: ${bet.coef || '—'}</span> | <span>Сумма: ${bet.amount}</span> | <span class="badge">${statusText}</span></div>${bet.comment ? `<div style="margin-top:6px; font-style:italic; opacity:0.8; font-size:11px;">💬 ${bet.comment}</div>` : ''}${freebetMark}</div><button class="history-icon-btn delete-btn" data-id="${bet.id}"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button><button class="history-icon-btn comment-btn" data-id="${bet.id}"><svg viewBox="0 0 24 24"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></button>`;
-                    list.appendChild(el);
-                });
+                    list.appendChild(el);                });
             }
-            document.getElementById('hist-next-btn').style.display = (historyPage * ITEMS_PER_PAGE < sorted.length) ? 'flex' : 'none';
-            document.getElementById('hist-prev-btn').style.display = historyPage > 1 ? 'flex' : 'none';
+            document.getElementById('hist-next-btn').style.display = (historyPage * ITEMS_PER_PAGE < sorted.length) ? 'flex' : 'none';            document.getElementById('hist-prev-btn').style.display = historyPage > 1 ? 'flex' : 'none';
         };
 
         // СТАТИСТИКА
@@ -476,8 +457,9 @@
             let pushes = allBets.filter(b => b.status === 'push');
             let winRate = totalBets > 0 ? ((wins.length / totalBets) * 100).toFixed(1) : 0;
 
-            let totalStaked = allBets.filter(b => b.method !== 'Freebet').reduce((a,b) => a + parseFloat(b.amount), 0);
-            let totalReturn = allBets.filter(b => b.status === 'win').reduce((a,b) => { if(b.method === 'Freebet') { return a + (parseFloat(b.amount) * parseFloat(b.coef) - parseFloat(b.amount)); } else { return a + (parseFloat(b.amount) * parseFloat(b.coef)); } }, 0);
+            // ✅ ПРАВКА 2: ROI считается корректно
+            let totalStaked = allBets.reduce((a,b) => a + parseFloat(b.amount), 0);
+            let totalReturn = allBets.filter(b => b.status === 'win').reduce((a,b) => a + (parseFloat(b.amount) * parseFloat(b.coef)), 0);
             let roiVal = totalStaked > 0 ? ((totalReturn - totalStaked) / totalStaked) * 100 : 0;
             let roi = roiVal.toFixed(2);
             let roiColor = roiVal >= 0 ? '#4CAF50' : '#D32F2F';
@@ -487,14 +469,12 @@
             document.getElementById('stat-total-with').textContent = totalWith.toFixed(2) + ' ₽';
             document.getElementById('stat-total-bets').textContent = totalBets;
             document.getElementById('stat-fb-bets').textContent = fbBets;
-            
-            // Правка 7: Цвета для выигрышей/проигрышей (цифры и скобки)
-            document.getElementById('stat-win-bets').innerHTML = `<span style="color:#4CAF50">${wins.length}</span> <span style="font-size:14px; color:#4CAF50;">(<span style="color:#4CAF50">${fbWins}</span>)</span>`;
-            document.getElementById('stat-loss-bets').innerHTML = `<span style="color:#D32F2F">${losses.length}</span> <span style="font-size:14px; color:#D32F2F;">(<span style="color:#D32F2F">${fbLosses}</span>)</span>`;
-            
+            document.getElementById('stat-win-bets').innerHTML = `${wins.length} <span style="color:#4CAF50;">(${fbWins})</span>`;
+            document.getElementById('stat-loss-bets').innerHTML = `${losses.length} <span style="color:#D32F2F;">(${fbLosses})</span>`;
             document.getElementById('stat-push-bets').textContent = pushes.length;
             document.getElementById('stat-win-rate').textContent = winRate + '%';
-            document.getElementById('stat-roi').innerHTML = `<span style="color:${roiColor}">${roi}%</span>`;            document.getElementById('stat-avg-coef').textContent = avgCoef;
+            document.getElementById('stat-roi').innerHTML = `<span style="color:${roiColor}">${roi}%</span>`;
+            document.getElementById('stat-avg-coef').textContent = avgCoef;
 
             const types = ['Одинар', 'Двойник', 'Тройник', 'Экспресс'];
             types.forEach((t, i) => {
@@ -508,11 +488,9 @@
 
             let bkStats = {};
             allBets.forEach(b => {
-                if (!bkStats[b.bk]) bkStats[b.bk] = { total: 0, won: 0, lost: 0, push: 0, staked: 0, returned: 0 };
-                bkStats[b.bk].total++;
+                if (!bkStats[b.bk]) bkStats[b.bk] = { total: 0, won: 0, lost: 0, push: 0, staked: 0, returned: 0 };                bkStats[b.bk].total++;
                 if(b.status === 'win') bkStats[b.bk].won++;
-                if(b.status === 'loss') bkStats[b.bk].lost++;
-                if(b.status === 'push') bkStats[b.bk].push++;
+                if(b.status === 'loss') bkStats[b.bk].lost++;                if(b.status === 'push') bkStats[b.bk].push++;
                 if(b.method !== 'Freebet') bkStats[b.bk].staked += parseFloat(b.amount);
                 if(b.status === 'win') bkStats[b.bk].returned += parseFloat(b.amount) * parseFloat(b.coef);
             });
@@ -543,12 +521,14 @@
             // Best Sport
             let sportStats = {};
             allBets.forEach(b => {
-                if (!sportStats[b.sport]) sportStats[b.sport] = { total: 0, won: 0, lost: 0, push: 0, staked: 0, returned: 0, coefSum: 0 };                sportStats[b.sport].total++;
+                if (!sportStats[b.sport]) sportStats[b.sport] = { total: 0, won: 0, lost: 0, push: 0, staked: 0, returned: 0, coefSum: 0 };
+                sportStats[b.sport].total++;
                 if(b.status === 'win') sportStats[b.sport].won++;
                 if(b.status === 'loss') sportStats[b.sport].lost++;
                 if(b.status === 'push') sportStats[b.sport].push++;
-                if(b.method !== 'Freebet') sportStats[b.sport].staked += (b.method === 'Freebet' ? 0 : parseFloat(b.amount
-                if(b.status==='win') { let p = parseFloat(b.amount)*parseFloat(b.coef); if(b.method==='Freebet') p -= parseFloat(b.amount); sportStats[b.sport].returned += p; }
+                // ✅ ПРАВКА 3: Вид спорта учитывает фрибеты
+                sportStats[b.sport].staked += parseFloat(b.amount);
+                if(b.status === 'win') sportStats[b.sport].returned += parseFloat(b.amount) * parseFloat(b.coef);
                 sportStats[b.sport].coefSum += parseFloat(b.coef);
             });
             let bestSport = null, bestSportRoi = -Infinity;
@@ -557,11 +537,9 @@
                 sportStats[s].roi = r.toFixed(2);
                 sportStats[s].avgCoef = (sportStats[s].coefSum / sportStats[s].total).toFixed(2);
                 sportStats[s].profit = (sportStats[s].returned - sportStats[s].staked).toFixed(0);
-                if(r > bestSportRoi) { bestSportRoi = r; bestSport = s; }
-            }
+                if(r > bestSportRoi) { bestSportRoi = r; bestSport = s; }            }
             const spCont = document.getElementById('stat-best-sport-container');
-            spCont.innerHTML = '';
-            if(bestSport) {
+            spCont.innerHTML = '';            if(bestSport) {
                 const s = sportStats[bestSport];
                 spCont.innerHTML = `
                 <div class="best-item">
@@ -584,15 +562,17 @@
                 if(b.status === 'win') typeStats[t].won++;
                 if(b.status === 'loss') typeStats[t].lost++;
                 if(b.status === 'push') typeStats[t].push++;
-                if(b.method !== 'Freebet') typeStats[t].staked += (b.method === 'Freebet' ? 0 : parseFloat(b.amount));
-                if(b.status==='win') { let p = parseFloat(b.amount)*parseFloat(b.coef); if(b.method==='Freebet') p -= parseFloat(b.amount); typeStats[t].returned += p; }
+                // ✅ ПРАВКА 4: Тип ставок учитывает фрибеты
+                typeStats[t].staked += parseFloat(b.amount);
+                if(b.status === 'win') typeStats[t].returned += parseFloat(b.amount) * parseFloat(b.coef);
                 typeStats[t].coefSum += parseFloat(b.coef);
             });
             let bestType = null, bestTypeRoi = -Infinity;
             for(let t in typeStats) {
                 if(typeStats[t].total === 0) continue;
                 let r = typeStats[t].staked > 0 ? ((typeStats[t].returned - typeStats[t].staked) / typeStats[t].staked) * 100 : -Infinity;
-                typeStats[t].roi = r.toFixed(2);                typeStats[t].avgCoef = (typeStats[t].coefSum / typeStats[t].total).toFixed(2);
+                typeStats[t].roi = r.toFixed(2);
+                typeStats[t].avgCoef = (typeStats[t].coefSum / typeStats[t].total).toFixed(2);
                 typeStats[t].profit = (typeStats[t].returned - typeStats[t].staked).toFixed(0);
                 if(r > bestTypeRoi) { bestTypeRoi = r; bestType = t; }
             }
@@ -606,11 +586,9 @@
                     <div class="best-stat"><span>Всего ставок:</span><span>${t.total}</span></div>
                     <div class="best-stat"><span>Выиграно:</span><span>${t.won}</span></div>
                     <div class="best-stat"><span>Проиграно:</span><span>${t.lost}</span></div>
-                    <div class="best-stat"><span>Возвраты:</span><span>${t.push}</span></div>
-                    <div class="best-stat"><span>Средний кф.:</span><span>${t.avgCoef}</span></div>
+                    <div class="best-stat"><span>Возвраты:</span><span>${t.push}</span></div>                    <div class="best-stat"><span>Средний кф.:</span><span>${t.avgCoef}</span></div>
                     <div class="best-stat"><span>ROI:</span><span style="color: ${parseFloat(t.roi) >= 0 ? '#4CAF50' : '#D32F2F'};">${t.roi}%</span></div>
-                    <div class="best-stat"><span>Прибыль:</span><span style="color: ${parseFloat(t.roi) >= 0 ? '#4CAF50' : '#D32F2F'};">${t.profit} ₽</span></div>
-                </div>`;
+                    <div class="best-stat"><span>Прибыль:</span><span style="color: ${parseFloat(t.roi) >= 0 ? '#4CAF50' : '#D32F2F'};">${t.profit} ₽</span></div>                </div>`;
             } else { tyCont.innerHTML = '<div class="stat-card" style="text-align:center; color:#e5c100;">Данных пока нет</div>'; }
 
             // Самая щедрая на фрибеты контора
@@ -622,20 +600,14 @@
             });
             const fbCont = document.getElementById('stat-best-fb-container');
             fbCont.innerHTML = '';
-            
-            let bestFbBk = null;
+            let bestFbBk = null, maxFbCount = -1;
             for(let bk in fbBkStats) {
-                if(!bestFbBk || fbBkStats[bk].count > fbBkStats[bestFbBk].count || (fbBkStats[bk].count === fbBkStats[bestFbBk].count && fbBkStats[bk].sum > fbBkStats[bestFbBk].sum)) {
-                    bestFbBk = bk;
-                }
+                if(fbBkStats[bk].count > maxFbCount) { maxFbCount = fbBkStats[bk].count; bestFbBk = bk; }
             }
-            
             if(bestFbBk) {
                 const d = fbBkStats[bestFbBk];
-                fbCont.innerHTML = `<div class="best-item" style="color:#ffffff;"><div class="best-title" style="color:#ffffff;">${bestFbBk}</div><div class="best-stat"><span>Количество фрибетов:</span><span>${d.count}</span></div><div class="best-stat"><span>Сумма фрибетов:</span><span>${d.sum.toFixed(0)} ₽</span></div></div>`;
-            } else {
-                fbCont.innerHTML = '<div class="stat-card" style="text-align:center; color:#e5c100;">Данных пока нет</div>';
-            }
+                fbCont.innerHTML = `<div class="best-item" style="color:#ffffff;"><div class="best-title" style="color:#ffffff;">${bestFbBk}</div><div class="best-stat"><span>Количество фрибетов:</span><span>${d.count}</span></div><div class="best-stat"><span>Общая сумма:</span><span>${d.sum.toFixed(0)} ₽</span></div></div>`;
+            } else { fbCont.innerHTML = '<div class="stat-card" style="text-align:center; color:#e5c100;">Данных пока нет</div>'; }
         }
 
         // Навешивание событий
@@ -646,7 +618,8 @@
         document.getElementById('toFreebetsBtn').addEventListener('click', () => window.switchScreen(window.els.main, window.els.freebetMain));
         document.getElementById('backToMenuBtn').addEventListener('click', () => window.switchScreen(window.els.bets, window.els.main));
         document.getElementById('toPlaceBetBtn').addEventListener('click', () => window.switchScreen(window.els.bets, window.els.place));
-        document.getElementById('backToBetsBtn').addEventListener('click', () => window.switchScreen(window.els.place, window.els.bets));        document.getElementById('backBetTypeBtn').addEventListener('click', () => window.switchScreen(window.els.type, window.els.payment));
+        document.getElementById('backToBetsBtn').addEventListener('click', () => window.switchScreen(window.els.place, window.els.bets));
+        document.getElementById('backBetTypeBtn').addEventListener('click', () => window.switchScreen(window.els.type, window.els.payment));
         document.getElementById('backBetKindBtn').addEventListener('click', () => window.switchScreen(window.els.kind, window.els.type));
         document.getElementById('backToKindBtn').addEventListener('click', () => window.switchScreen(window.els.sport, window.els.kind));
         document.getElementById('backToBKFromPaymentBtn').addEventListener('click', () => window.switchScreen(window.els.payment, window.els.place));
@@ -662,8 +635,7 @@
             const val = document.getElementById('coef-input').value.trim(); const regex = /^\d+[,.]\d{2}$/; const errorEl = document.getElementById('coef-error'); const wrapper = document.getElementById('coef-wrapper');
             if (regex.test(val)) { 
                 currentData.coef = parseFloat(val.replace(',', '.')); errorEl.style.opacity = '0'; wrapper.classList.remove('shake-input'); 
-                document.getElementById('coef-input').value = ''; 
-                betCounter++;
+                document.getElementById('coef-input').value = '';                 betCounter++;
                 allBets.push({ id: betCounter, bk: currentData.bk||'Unknown', type: currentData.type||'Pre-match (Линия)', kind: currentData.kind||'Одинар', method: currentData.method||'Real', amount: currentData.amount||0, coef: currentData.coef, sport: currentData.sport||'Other', status: 'uncalculated', date: new Date().toLocaleDateString('ru-RU'), comment: '' });
                 document.getElementById('bet-number').textContent = betCounter;
                 window.switchScreen(window.els.coef, window.els.success); 
@@ -682,21 +654,17 @@
             window.switchScreen(window.els.statsMain, window.els.main);
         });
 
-        // Правка 1: Кнопки "В мою статистику" ведут в раздел статистики
+        document.getElementById('calcToPlaceBetBtn').addEventListener('click', () => window.switchScreen(window.els.uncalc, window.els.place));        document.getElementById('calcToMainBtn').addEventListener('click', () => window.switchScreen(window.els.uncalc, window.els.main));
+        document.getElementById('backToUncalcBtn').addEventListener('click', () => window.switchScreen(window.els.calc, window.els.uncalc));
+
         ['win','loss','push'].forEach(type => {
-            document.getElementById(`${type}ToStatsBtn`).addEventListener('click', () => {
-                renderStats();
-                window.switchScreen(window.els[type], window.els.statsGeneral);
-            });
+            document.getElementById(`${type}ToStatsBtn`).addEventListener('click', () => { renderStats(); window.switchScreen(window.els[type], window.els.statsGeneral); });
             document.getElementById(`${type}BackBtn`).addEventListener('click', () => { window.renderBetsList(); window.switchScreen(window.els[type], window.els.uncalc); });
             document.getElementById(`${type}ToMainBtn`).addEventListener('click', () => window.switchScreen(window.els[type], window.els.main));
         });
 
-        document.getElementById('calcToPlaceBetBtn').addEventListener('click', () => window.switchScreen(window.els.uncalc, window.els.place));
-        document.getElementById('calcToMainBtn').addEventListener('click', () => window.switchScreen(window.els.uncalc, window.els.main));
-        document.getElementById('backToUncalcBtn').addEventListener('click', () => window.switchScreen(window.els.calc, window.els.uncalc));
-        const hNext = document.getElementById('hist-next-btn'); if(hNext) hNext.addEventListener('click', () => { historyPage++; window.renderHistoryPage(); });
-        const hPrev = document.getElementById('hist-prev-btn'); if(hPrev) hPrev.addEventListener('click', () => { if(historyPage > 1) { historyPage--; window.renderHistoryPage(); } });
+        document.getElementById('hist-next-btn').addEventListener('click', () => { historyPage++; window.renderHistoryPage(); });
+        document.getElementById('hist-prev-btn').addEventListener('click', () => { if(historyPage > 1) { historyPage--; window.renderHistoryPage(); } });
         document.getElementById('hist-main-btn').addEventListener('click', () => { historyPage = 1; window.switchScreen(window.els.history, window.els.main); });
 
         document.getElementById('history-list').addEventListener('click', (e) => {
@@ -716,8 +684,7 @@
         document.getElementById('delete-no').addEventListener('click', () => { currentDeleteId = null; window.els.deletePopup.classList.remove('active'); });
 
         document.getElementById('clearHistoryBtn').addEventListener('click', () => { window.els.clearPopup.classList.add('active'); });
-        document.getElementById('clear-yes').addEventListener('click', () => { allBets = []; betCounter = 0; currentDeleteId = null; currentCommentId = null; window.els.clearPopup.classList.remove('active'); window.showAlert('История очищена'); window.renderHistoryPage(); });
-        document.getElementById('clear-no').addEventListener('click', () => { window.els.clearPopup.classList.remove('active'); });
+        document.getElementById('clear-yes').addEventListener('click', () => { allBets = []; betCounter = 0; currentDeleteId = null; currentCommentId = null; window.els.clearPopup.classList.remove('active'); window.showAlert('История очищена'); window.renderHistoryPage(); });        document.getElementById('clear-no').addEventListener('click', () => { window.els.clearPopup.classList.remove('active'); });
 
         document.getElementById('comment-save').addEventListener('click', () => { const bet = allBets.find(b => b.id == currentCommentId); if(bet) bet.comment = document.getElementById('comment-input').value.trim(); currentCommentId = null; window.els.commentPopup.classList.remove('active'); window.renderHistoryPage(); });
         document.getElementById('comment-close').addEventListener('click', () => { const bet = allBets.find(b => b.id == currentCommentId); if(bet) bet.comment = document.getElementById('comment-input').value.trim(); currentCommentId = null; window.els.commentPopup.classList.remove('active'); window.renderHistoryPage(); });
@@ -744,7 +711,8 @@
         document.getElementById('with-bk-to-main').addEventListener('click', () => window.switchScreen(window.els.withBk, window.els.main));
         document.getElementById('with-next').addEventListener('click', () => { const val = document.getElementById('with-amount-input').value; if(val) { userWithdrawals.push({ id: Date.now(), bk: currentData.withBk, amount: parseFloat(val), date: new Date().toLocaleDateString('ru-RU') }); document.getElementById('with-amount-input').value = ''; window.switchScreen(window.els.withAmount, window.els.withSuccess); } else window.showAlert('Введите сумму вывода'); });
         document.getElementById('with-back').addEventListener('click', () => window.switchScreen(window.els.withAmount, window.els.withBk));
-        document.getElementById('with-amount-to-main').addEventListener('click', () => window.switchScreen(window.els.withAmount, window.els.main));        document.getElementById('with-success-to-main').addEventListener('click', () => window.switchScreen(window.els.withSuccess, window.els.main));
+        document.getElementById('with-amount-to-main').addEventListener('click', () => window.switchScreen(window.els.withAmount, window.els.main));
+        document.getElementById('with-success-to-main').addEventListener('click', () => window.switchScreen(window.els.withSuccess, window.els.main));
         document.getElementById('with-to-stats').addEventListener('click', () => { renderStats(); window.switchScreen(window.els.withSuccess, window.els.statsGeneral); });
         document.getElementById('with-history-to-main').addEventListener('click', () => window.switchScreen(window.els.withHistory, window.els.main));
         document.getElementById('with-clear-history').addEventListener('click', () => window.els.withClearPopup.classList.add('active'));
@@ -765,8 +733,7 @@
         document.getElementById('freebet-clear-yes').addEventListener('click', () => { userFreebets = []; window.els.freebetClearPopup.classList.remove('active'); window.renderFreebetHistory(); window.showAlert('История фрибетов очищена'); });
         document.getElementById('freebet-clear-no').addEventListener('click', () => { window.els.freebetClearPopup.classList.remove('active'); });
         
-        document.getElementById('popup-go-to-freebet-from-not-found').addEventListener('click', () => {
-            window.els.freebetNotFoundPopup.classList.remove('active');
+        document.getElementById('popup-go-to-freebet-from-not-found').addEventListener('click', () => {            window.els.freebetNotFoundPopup.classList.remove('active');
             window.switchScreen(window.els.payment, window.els.freebetMain);
         });
 
