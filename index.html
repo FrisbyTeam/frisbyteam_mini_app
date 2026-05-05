@@ -634,12 +634,12 @@
         document.getElementById('nextCoefBtn').addEventListener('click', () => {
             const val = document.getElementById('coef-input').value.trim(); const regex = /^\d+[,.]\d{2}$/; const errorEl = document.getElementById('coef-error'); const wrapper = document.getElementById('coef-wrapper');
             if (regex.test(val)) { 
-                currentData.coef = parseFloat(val.replace(',', '.')); errorEl.style.opacity = '0'; wrapper.classList.remove('shake-input'); 
+                currentData.coef = parseFloat(val.replace(',', '.')); errorEl.style.opacity = '0'; w.classList.remove('shake-input'); 
                 document.getElementById('coef-input').value = '';                 betCounter++;
                 allBets.push({ id: betCounter, bk: currentData.bk||'Unknown', type: currentData.type||'Pre-match (Линия)', kind: currentData.kind||'Одинар', method: currentData.method||'Real', amount: currentData.amount||0, coef: currentData.coef, sport: currentData.sport||'Other', status: 'uncalculated', date: new Date().toLocaleDateString('ru-RU'), comment: '' });
                 document.getElementById('bet-number').textContent = betCounter;
                 window.switchScreen(window.els.coef, window.els.success); 
-            } else { errorEl.style.opacity = '1'; wrapper.classList.add('shake-input'); if (window.Telegram && Telegram.WebApp) Telegram.WebApp.HapticFeedback?.notificationOccurred('error'); setTimeout(() => { document.getElementById('coef-input').value = ''; wrapper.classList.remove('shake-input'); }, 500); }
+            } else { errorEl.style.opacity = '1'; wrapper.classList.add('shake-input'); if (window.Telegram && Telegram.WebApp) Telegram.WebApp.HapticFeedback?.notificationOccurred('error'); setTimeout(() => { document.getElementById('coef-input').value = ''; w.classList.remove('shake-input'); }, 500); }
         });
         document.getElementById('backToAmountBtn').addEventListener('click', () => window.switchScreen(window.els.coef, window.els.amount));
         document.getElementById('nextBetBtn').addEventListener('click', () => window.switchScreen(window.els.success, window.els.place));
